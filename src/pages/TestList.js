@@ -12,8 +12,7 @@ const TestList = (props) => {
     return (
         <React.Fragment>
             <div>
-
-                <button onClick={() => {history.push('/write')}}>페이지 수정 잘되니ㅏ?</button>
+                <button onClick={() => {history.push('/write')}}>페이지 이동</button>
             </div>
 
         </React.Fragment>
