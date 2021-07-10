@@ -10,7 +10,7 @@ import { useDispatch } from "react-redux";
 
 
 import { Grid, Button } from "../elements";
-
+import ReviewWrite from "../pages/ReviewWrite";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,6 +25,8 @@ function App() {
         <ConnectedRouter history={history}>
           <Route path="/" exact component={TestList} />
           <Route path="/write" component={TestWrite} />
+          <Route path="/review" component={TestWrite} />
+
         </ConnectedRouter>
       </Grid>
     </React.Fragment>
