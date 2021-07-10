@@ -28,4 +28,3 @@ const PostList = (props) => {
 PostList.defaultProps = {};
 
 export default PostList;
-
