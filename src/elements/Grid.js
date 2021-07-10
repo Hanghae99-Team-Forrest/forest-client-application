@@ -4,6 +4,7 @@ import styled from "styled-components";
 const Grid = (props) => {
   const {
     is_flex,
+    is_main,
     width,
     padding,
     margin,
@@ -22,6 +23,7 @@ const Grid = (props) => {
 
   const styles = {
     is_flex: is_flex,
+    is_main: is_main,
     width: width,
     padding: padding,
     margin: margin,
@@ -49,6 +51,7 @@ const Grid = (props) => {
 Grid.defaultProps = {
   children: null,
   is_flex: false,
+  is_main: false,
   width: "100%",
   height: "100%",
   padding: false,
@@ -82,6 +85,7 @@ const GridBox = styled.div`
     props.is_flex
       ? `display: flex; align-items: center; justify-content: space-between`
       : ""}
+  ${(props) => (props.is_main ? `position: relative;` : "")}      
 `;
 
 export default Grid;

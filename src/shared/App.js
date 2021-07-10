@@ -1,7 +1,7 @@
 import "./App.css";
 import React from "react";
-import TestList from "../pages/TestList";
-import TestWrite from "../pages/TestWrite";
+import PostList from "../pages/PostList";
+import PostWrite from "../pages/PostWrite";
 
 import { BrowserRouter, Route } from "react-router-dom";
 import { ConnectedRouter } from "connected-react-router";
@@ -23,8 +23,8 @@ function App() {
     <React.Fragment>
       <Grid>
         <ConnectedRouter history={history}>
-          <Route path="/" exact component={TestList} />
-          <Route path="/write" component={TestWrite} />
+          <Route path="/" exact component={PostList} />
+          <Route path="/write" component={PostWrite} />
         </ConnectedRouter>
       </Grid>
     </React.Fragment>
