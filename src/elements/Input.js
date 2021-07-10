@@ -5,7 +5,6 @@ import { Text, Grid } from "./index";
 
 const Input = (props) => {
   const {
-    label,
     placeholder,
     _onChange,
     type,
@@ -18,7 +17,6 @@ const Input = (props) => {
   if (multiLine) {
     return (
       <Grid>
-        {label && <Text margin="0px">{label}</Text>}
         <ElTextarea
           rows={10}
           value={value}
@@ -32,7 +30,6 @@ const Input = (props) => {
   return (
     <React.Fragment>
       <Grid>
-        {label && <Text margin="0px">{label}</Text>}
         {is_submit ? (
           <ElInput
             type={type}
@@ -55,7 +52,6 @@ const Input = (props) => {
 
 Input.defaultProps = {
   multiLine: false,
-  label: false,
   placeholder: "텍스트를 입력해주세요.",
   type: "text",
   value: "",
@@ -65,16 +61,16 @@ Input.defaultProps = {
 };
 
 const ElTextarea = styled.textarea`
-  border: 1px solid #212121;
+  border: 0.1rem solid #212121;
   width: 100%;
-  padding: 12px 4px;
+  padding: 1.2rem 0.4rem;
   box-sizing: border-box;
 `;
 
 const ElInput = styled.input`
-  border: 1px solid #212121;
+  border: 0.1rem solid #212121;
   width: 100%;
-  padding: 12px 4px;
+  padding: 1.2rem 0.4rem;
   box-sizing: border-box;
 `;
 

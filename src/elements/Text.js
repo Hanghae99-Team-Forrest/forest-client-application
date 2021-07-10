@@ -16,7 +16,7 @@ Text.defaultProps = {
   children: null,
   bold: false,
   color: "#222831",
-  size: "14px",
+  size: "1.4rem",
   margin: false,
 };
 

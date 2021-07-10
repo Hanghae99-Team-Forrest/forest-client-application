@@ -33,20 +33,21 @@ const Image = (props) => {
 Image.defaultProps = {
   shape: "circle",
   src: "https://mean0images.s3.ap-northeast-2.amazonaws.com/4.jpeg",
-  size: 36,
+  size: 3.6,
 };
 
 const ImageDefault = styled.div`
-  --size: ${(props) => props.size}px;
+  --size: ${(props) => props.size}rem;
   width: var(--size);
   height: var(--size);
   background-image: url("${(props) => props.src}");
+  background-position: center;
   background-size: cover;
 `;
 
 const AspectOutter = styled.div`
     width: 100%;
-    min-width: 250px;
+    min-width: 25rem;
 `;
 
 const AspectInner = styled.div`
@@ -54,18 +55,19 @@ const AspectInner = styled.div`
     padding-top: 75%;
     overflow: hidden;
     background-image: url("${(props) => props.src}");
+    background-position: center;
     background-size: cover;
 `;
 
 const ImageCircle = styled.div`
-    --size: ${(props) => props.size}px;
+    --size: ${(props) => props.size}rem;
     width: var(--size);
     height: var(--size);
     border-radius: var(--size);
 
     background-image: url("${(props) => props.src}");
     background-size: cover;
-    margin: 4px;
+    margin: 0.4rem;
 `;
 
 export default Image;

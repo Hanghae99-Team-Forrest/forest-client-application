@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { history } from "../redux/configureStore";
-import { actionCreators as postActions } from "../redux/modules/post";
+import { actionCreators as postActions } from "../redux/modules/test";
 
 const TestList = (props) => {
     const dispatch = useDispatch();
