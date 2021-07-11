@@ -26,7 +26,6 @@ function App() {
           <Route path="/" exact component={PostList} />
           <Route path="/write" component={PostWrite} />
           <Route path="/review" component={ReviewWrite} />
-
         </ConnectedRouter>
       </Grid>
     </React.Fragment>
