@@ -12,10 +12,10 @@ import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 const theme = createTheme({
   palette: {
     primary: {
-      main: purple[500],
+      main: '#ffffff',
     },
     secondary: {
-      main: "#718093",
+      main: "#44bd32",
     },
   },
 });
@@ -39,7 +39,7 @@ export default function DropDown(props) {
   };
 
   return (
-    <div style={{ margin: "0 1rem" }}>
+    <div style={{ margin: "0 1rem"}}>
       <ThemeProvider theme={theme}>
         <Button
           aria-controls="customized-menu"
@@ -47,13 +47,16 @@ export default function DropDown(props) {
           variant="contained"
           color="secondary"
           onClick={handleClick}
+          style={{width: '13rem', margin: '0 auto'}}
         >
-          <Text size="1.6rem" margin="0" color="white" bold="t">
-            <Grid is_flex="t">
-              <Grid margin='0 1rem 0 0'>{props.menu_name}</Grid>
-              {props.icon.icon}
+          <Grid is_flex="t">
+            <Grid margin="0 1rem 0 0">
+              <Text size="1.6rem" margin="0" color="#ffffff" bold="t">
+                {props.menu_name}
+              </Text>
             </Grid>
-          </Text>
+            {props.icon.icon}
+          </Grid>
         </Button>
         <StyledMenu
           id="customized-menu"
@@ -84,7 +87,7 @@ DropDown.defaultProps = {
   options: ["수정", "삭제", "상세보기"],
   icon: {
     _name: "",
-    icon: <ArrowDropDownIcon fontSize="large" />,
+    icon: <ThemeProvider theme={theme}><ArrowDropDownIcon fontSize="large" color='primary'/></ThemeProvider>,
   },
   post_id: "0",
   size: "",

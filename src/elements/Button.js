@@ -29,11 +29,11 @@ Button.defaultProps = {
   margin: false,
   width: "100%",
   height: "100%",
-  size: false,
+  size: "",
   padding: false,
   bg: false,
-  color: false,
-  radius: false,
+  color: "",
+  radius: "",
   shadow: false,
 };
 

@@ -19,7 +19,7 @@ Text.defaultProps = {
   color: "#222831",
   size: "1.4rem",
   margin: false,
-  width: false,
+  width: "",
   is_main: false,
   padding: false,
 };
