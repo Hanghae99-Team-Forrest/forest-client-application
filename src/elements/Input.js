@@ -67,7 +67,7 @@ const ElTextarea = styled.textarea`
   padding: 1.2rem 0.4rem;
   box-sizing: border-box;
   resize: none;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
 `;
 
 const ElInput = styled.input`

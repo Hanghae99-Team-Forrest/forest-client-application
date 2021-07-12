@@ -17,7 +17,7 @@ const ReviewContents = (props) => {
     setTitle(e.target.value);
     //   console.log(title);
   };
-
+  
   // 리뷰 내용
   const changeContents = (e) => {
     setContents(e.target.value);
@@ -49,96 +49,18 @@ const ReviewContents = (props) => {
     }
   };
 
-  if (props.shape === "no_flex") {
-    return (
-      <React.Fragment>
-        <Grid margin="0 auto" maxWidth="40rem">
-          <Grid margin="2rem auto 0">
-            <Text bold="t" size="1.6rem" margin="0 auto 1rem" width="35rem">
-              이미지
-            </Text>
-            <Grid is_flex margin="0 auto" maxWidth="35rem">
-              <input
-                type="file"
-                onChange={selectFile}
-                ref={fileInput}
-                // disabled={uploading}
-              ></input>
-            </Grid>
-            <Text bold="t" size="1.6rem" margin="2rem auto 1rem" width="35rem">
-              Preview
-            </Text>
-            <Grid border="t" margin="1rem auto 3rem" maxWidth="35rem">
-              <Grid margin="0 auto" maxWidth="35rem">
-                <Grid padding="0 1.6rem">
-                  <Text size="1.6rem">{props.contents}</Text>
-                </Grid>
 
-                <Image shape="rectangle" src={props.src}></Image>
-              </Grid>
-            </Grid>
-          </Grid>
-
-          <Grid width="100%" margin="0 auto 0">
-            <Grid maxWidth="35rem" margin="0 auto">
-              <Text bold="t" size="1.6rem" margin="0 0.5rem 1rem">
-                리뷰 제목
-              </Text>
-              <Input
-                value={title}
-                _onChange={changeTitle}
-                placeholder="제목을 입력해주세요."
-              ></Input>
-            </Grid>
-            <Grid maxWidth="35rem" margin="0 auto">
-              <Text bold="t" size="1.6rem" margin="3rem 0.5rem 1rem">
-                리뷰 작성
-              </Text>
-              <Input
-                value={contents}
-                _onChange={changeContents}
-                placeholder="휴양지 리뷰를 작성해주세요"
-                multiLine="true"
-              ></Input>
-            </Grid>
-
-            <Grid maxWidth="35rem" margin="0 auto">
-              <Text bold="t" size="1.6rem" margin="3rem 0.5rem 1rem">
-                닉네임
-              </Text>
-              <Input
-                value={nick}
-                _onChange={changeNick}
-                placeholder="닉네임을 입력하세요"
-              ></Input>
-            </Grid>
-
-            <Grid maxWidth="35rem" margin="0 auto">
-              <Button
-                margin="3rem auto 2rem 0"
-                _onClick={addReview}
-                bg="#4cd137"
-                radius="0.4rem"
-                height="4rem"
-              >
-                <Text color="white" margin="0" bold="t" size="1.6rem">
-                  업로드
-                </Text>
-              </Button>
-            </Grid>
-          </Grid>
-        </Grid>
-      </React.Fragment>
-    );
-  }
   return (
     <React.Fragment>
-      <Grid is_flex="t" margin="0 auto" maxWidth="140rem">
-        <Grid margin="2rem 2rem 0">
-          <Text bold="t" size="1.6rem" margin="0 auto 1rem" width="40rem">
-            이미지
-          </Text>
-          <Grid is_flex margin="0 auto" maxWidth="40rem">
+      <Grid review_flex="t" margin="0 auto" maxWidth="180rem">
+        <Grid margin="3rem auto 0" maxWidth='50rem' padding='0 2rem'>
+          <Grid is_flex margin="0 auto" maxWidth="70rem">
+            <Text bold="t" size="1.6rem" margin="0 auto 1rem" width="20rem">
+              이미지
+            </Text>
+            <Grid></Grid>
+          </Grid>
+          <Grid is_flex margin="0 auto" maxWidth="70rem">
             <input
               type="file"
               onChange={selectFile}
@@ -146,22 +68,23 @@ const ReviewContents = (props) => {
               // disabled={uploading}
             ></input>
           </Grid>
-          <Text bold="t" size="1.6rem" margin="2rem auto 1rem" width="40rem">
-            Preview
-          </Text>
-          <Grid border="t" margin="1rem auto 3rem" maxWidth="40rem">
-            <Grid margin="0 auto" maxWidth="40rem">
-              <Grid padding="0 1.6rem">
-                <Text size="1.6rem">{props.contents}</Text>
-              </Grid>
-
-              <Image shape="rectangle" src={props.src}></Image>
-            </Grid>
+          <Grid is_flex margin="0 auto" maxWidth="70rem">
+            <Text bold="t" size="1.6rem" margin="2rem auto 0" width="20rem">
+              Preview
+            </Text>
+            <Grid></Grid>
+          </Grid>
+          <Grid border="t" margin="1rem auto 3rem" maxWidth="70rem">
+            <Image
+              shape="rectangle"
+              src={props.src}
+              size="30rem"
+              radius="t"
+            ></Image>
           </Grid>
         </Grid>
-
-        <Grid width="100%" margin="0 2rem 0">
-          <Grid maxWidth="40rem" margin="0 auto">
+        <Grid margin="3rem auto 0" maxWidth='50rem' padding='0 2rem 2rem'>
+          <Grid maxWidth="70rem" margin="0 auto">
             <Text bold="t" size="1.6rem" margin="0 0.5rem 1rem">
               리뷰 제목
             </Text>
@@ -171,7 +94,7 @@ const ReviewContents = (props) => {
               placeholder="제목을 입력해주세요."
             ></Input>
           </Grid>
-          <Grid maxWidth="40rem" margin="0 auto">
+          <Grid maxWidth="70rem" margin="0 auto">
             <Text bold="t" size="1.6rem" margin="3rem 0.5rem 1rem">
               리뷰 작성
             </Text>
@@ -182,8 +105,7 @@ const ReviewContents = (props) => {
               multiLine="true"
             ></Input>
           </Grid>
-
-          <Grid maxWidth="40rem" margin="0 auto">
+          <Grid maxWidth="70rem" margin="0 auto">
             <Text bold="t" size="1.6rem" margin="3rem 0.5rem 1rem">
               닉네임
             </Text>
@@ -193,8 +115,7 @@ const ReviewContents = (props) => {
               placeholder="닉네임을 입력하세요"
             ></Input>
           </Grid>
-
-          <Grid maxWidth="40rem" margin="0 auto">
+          <Grid maxWidth="70rem" margin="0 auto 2rem">
             <Button
               margin="3rem auto 0 0"
               _onClick={addReview}
