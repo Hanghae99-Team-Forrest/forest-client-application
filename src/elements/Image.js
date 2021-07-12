@@ -22,11 +22,7 @@ const Image = (props) => {
   }
 
   if (shape === "main") {
-    return (
-      <MainBackground>
-        <MainInner {...styles}>{children}</MainInner>
-      </MainBackground>
-    );
+    return <MainInner {...styles}>{children}</MainInner>;
   }
   return (
     <React.Fragment>
@@ -78,13 +74,14 @@ const ImageCircle = styled.div`
 const MainBackground = styled.div`
   width: 100%;
   min-width: 25rem;
-
 `;
 
 const MainInner = styled.div`
+  width: 100%;
+  min-width: 25rem;
   position: relative;
   padding-top: 45%;
-  overflow: hidden;
+  /* overflow: hidden; */
   background-image: url("${(props) => props.src}");
   /* background-position: center; */
   background-size: cover;
