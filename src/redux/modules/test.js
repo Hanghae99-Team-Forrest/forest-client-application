@@ -1,6 +1,7 @@
 import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
 import axios from "axios";
+import { history } from "../configureStore";
 
 const SET_TEST = "SET_TEST";
 const ADD_TEST = "ADD_TEST";
@@ -22,14 +23,16 @@ const addPostAX = (title, contents) => {
 
     axios
       .post(
-        "/api/posts",
+        "http://localhost:4000/posts",
         { title: title, content: contents },
         { headers: headers }
       )
       .then(function (response) {
         console.log(response);
-        const test = { title: title, content: contents, id: response.id };
-        dispatch(addTest(test));
+        const posts = { title: title, content: contents, id: response.id };
+        dispatch(addTest(posts));
+        window.alert("게시글 작성 완료!");
+        history.replace("/");
       })
       .catch(function (error) {
         console.log(error);
@@ -46,7 +49,7 @@ const getPostAX = () => {
     };
 
     axios
-      .get("/api/posts")
+      .get("http://localhost:4000/posts")
       .then((res) => {
         console.log(res);
         console.log(res.data);

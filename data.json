@@ -1,0 +1,55 @@
+{
+  "user": [
+    {
+      "id": 1,
+      "email": "yjh8806@hotmail.com",
+      "password": "helloreact1234",
+      "nickName": "Leon",
+      "profile": "https://mean0images.s3.ap-northeast-2.amazonaws.com/4.jpeg",
+      "kakaoID": "yjh8806@hotmail.co.kr",
+      "createdAt": "2021-07-11 10:00:00",
+      "updatedAt": "2021-07-12 10:00:00(수정일)"
+    }
+  ],
+  "post": [
+    {
+      "id": 1,
+      "userId": 1,
+      "categoryId": 1,
+      "title": "메타세콰이어 숲",
+      "content": "쭉 뻗은 나무 숲길을 걸어보세요 :)",
+      "is_open": 1,
+      "createdAt": "2021-07-11 10:00:00",
+      "updatedAt": "2021-07-12 10:00:00(수정일)"
+    }
+  ],
+  "category": [
+    {
+      "id": 1,
+      "name": "valley",
+      "createdAt": "2021-07-11 10:00:00",
+      "updatedAt": "2021-07-12 10:00:00(수정일)"
+    }
+  ],
+  "like": [
+    {
+      "id": 1,
+      "userId": 1,
+      "boardId": "ALSKDJ87AN%LKJ42%LKJ",
+      "likeCnt": 0,
+      "createdAt": "2021-07-11 10:00:00",
+      "updatedAt": "2021-07-12 10:00:00(수정일)"
+    }
+  ],
+  "comment": [
+    {
+      "id": 1,
+      "userId": 1,
+      "boardId": 1,
+      "nickName": "Leon",
+      "content": "여기 완전 좋아요!! 무조건 추천!!",
+      "createdAt": "2021-07-11 10:00:00",
+      "updatedAt": "2021-07-12 10:00:00(수정일)"
+    }
+  ]
+}

@@ -6,16 +6,30 @@ import heart_gray from "../shared/img/heart_gray.png";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 
+import { useDispatch, useSelector } from "react-redux";
 import { history } from "../redux/configureStore";
+import { actionCreators as testActions } from "../redux/modules/test";
 
 const Post = (props) => {
-  
+  const dispatch = useDispatch();
+  // const list = useSeletor((state) => state.)
+  React.useEffect(() => {
+    dispatch(testActions.getPostAX());
+  });
   return (
     <React.Fragment>
-      <Grid width="26rem" height="40rem" margin="0 0 5rem 0" radius="true" shadow>
+      <Grid
+        width="26rem"
+        height="40rem"
+        margin="0 0 5rem 0"
+        radius="true"
+        shadow
+      >
         <Image shape="rectangle" src={props.image_url} />
         <Grid is_flex height="5rem" padding="0 0.5rem 0 0.7rem">
-          <Text size="2rem" margin="0 0 0 1rem" bold>{props.title}</Text>
+          <Text size="2rem" margin="0 0 0 1rem" bold>
+            {props.title}
+          </Text>
           <div>
             {props.is_me && (
               <Button

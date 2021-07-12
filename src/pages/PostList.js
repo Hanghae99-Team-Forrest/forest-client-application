@@ -14,7 +14,7 @@ const PostList = (props) => {
   const dispatch = useDispatch();
 
   React.useEffect(() => {
-    // dispatch(postActions.getPostAX());
+    dispatch(postActions.getPostAX());
   });
   return (
     <Grid>
