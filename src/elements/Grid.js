@@ -4,11 +4,9 @@ import styled from "styled-components";
 const Grid = (props) => {
   const {
     is_flex,
-    is_main,
-    width,
+    position,
     padding,
     margin,
-    height,
     bg,
     children,
     center,
@@ -19,23 +17,33 @@ const Grid = (props) => {
     minWidth,
     shadow,
     minHeight,
+    top,
+    left,
+    right,
+    width,
+    height,
+    maxHeight,
   } = props;
 
   const styles = {
     is_flex: is_flex,
-    is_main: is_main,
-    width: width,
+    position: position,
     padding: padding,
     margin: margin,
     bg: bg,
     center: center,
-    height: height,
     maxWidth: maxWidth,
     border: border,
     borderBottom: borderBottom,
     minWidth: minWidth,
     shadow: shadow,
     minHeight: minHeight,
+    top: top,
+    left: left,
+    right: right,
+    width: width,
+    height: height,
+    maxHeight: maxHeight,
   };
 
   return (
@@ -51,7 +59,7 @@ const Grid = (props) => {
 Grid.defaultProps = {
   children: null,
   is_flex: false,
-  is_main: false,
+  position: false,
   width: "100%",
   height: "100%",
   padding: false,
@@ -65,9 +73,14 @@ Grid.defaultProps = {
   minHeight: false,
   shadow: false,
   _onClick: () => {},
+  top: false,
+  left: false,
+  right: false,
+  maxHeight: false,
 };
 
 const GridBox = styled.div`
+  ${(props) => (props.width? `width: ${props.width};`: "")};
   height: ${(props) => props.height};
   box-sizing: border-box;
   ${(props) => (props.maxWidth ? `max-width: ${props.maxWidth};` : "")}
@@ -79,13 +92,17 @@ const GridBox = styled.div`
   ${(props) => (props.center ? `text-align: ${props.center};` : "")}
   ${(props) => (props.borderBottom ? `border-bottom: ${props.borderBottom};` : "")}
   ${(props) =>
-    props.border ? `border-radius: 5px; border: 1px solid #718093;` : ""}
+    props.border ? `border-radius: 0.5rem; border: 0.1rem solid #718093;` : ""}
   ${(props) => (props.shadow ? `box-shadow: 0.5rem 0.5rem #dcdde1;` : "")}
   ${(props) =>
     props.is_flex
-      ? `display: flex; align-items: center; justify-content: space-between`
+      ? `display: flex; align-items: center; justify-content: space-between;`
       : ""}
-  ${(props) => (props.is_main ? `position: relative;` : "")}      
+  ${(props) => (props.position ? `position: ${props.position};` : "")}
+  ${(props) => (props.top ? `top: ${props.top};` : "")}
+  ${(props) => (props.left ? `left: ${props.left};` : "")}
+  ${(props) => (props.right ? `right: ${props.right};` : "")}
+  ${(props) => (props.maxHeight ? `max-height: ${props.maxHeight};` : "")}
 `;
 
 export default Grid;
