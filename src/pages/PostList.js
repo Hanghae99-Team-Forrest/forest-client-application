@@ -1,11 +1,14 @@
 import React from "react";
 import styled from "styled-components";
+
+import forest from "../shared/img/forest2.jpeg";
+import Post from "../components/Post";
+import { Grid, Image, Text, Input, Button } from "../elements";
+import BorderColorIcon from "@material-ui/icons/BorderColor";
+
 import { useDispatch } from "react-redux";
 import { history } from "../redux/configureStore";
 import { actionCreators as postActions } from "../redux/modules/test";
-import forest from "../shared/img/forest2.jpeg";
-
-import { Grid, Image, Text, Input, Button } from "../elements";
 
 const PostList = (props) => {
   const dispatch = useDispatch();
@@ -47,38 +50,46 @@ const PostList = (props) => {
       </Grid>
 
       <Grid padding="0px" maxWidth="100rem" margin="0px auto">
-        <Grid is_flex maxWidth="28rem" margin="0 10rem 0 0">
-          <Button bg="white" width="7rem" padding="0">
-            <Text size="2rem" color="#212121" bold>
-              최신순
-            </Text>
-          </Button>
-          <Button bg="white" padding="0 6rem 0 0">
-            <Text size="2rem" color="#212121" bold>
-              인기순
-            </Text>
-          </Button>
-        </Grid>
-        <hr style={{color: "gray", size:"0.1rem", margin: "0 0 7rem 0"}}/>
-        <Grid height="70rem">
-          <Grid>
-            포스트 사진
-            <Grid width="20rem" height="24rem" bg="yellowgreen">
-              
-            </Grid>
-            <Grid width="14rem" height="5rem" bg="gray">
-              제목
-            </Grid>
-            <Grid width="7rem" height="5rem" bg="gray">
-              프로필 이미지
-            </Grid>
-            <Grid width="7rem" height="5rem" bg="gray">
-              by 작성자
-            </Grid>
-            <Grid width="7rem" height="5rem" bg="gray">
-              좋아요 0개
-            </Grid>
+        <Grid is_flex maxWidth="100%" margin="0 10rem 0 0">
+          <Grid flex maxWidth="30%">
+            <Button bg="white" width="7rem" padding="0">
+              <Text size="2rem" color="#212121" bold>
+                최신순
+              </Text>
+            </Button>
+            <Button bg="white" width="11rem" padding="0 0 0 5rem">
+              <Text size="2rem" color="#212121" bold>
+                인기순
+              </Text>
+            </Button>
           </Grid>
+
+          <Grid is_flex maxWidth="13rem" margin="0 4rem 0 0">
+            <Button
+              width="3rem"
+              height="3rem"
+              margin="0.8rem 0 0 0"
+              padding="0"
+              radius="0.8rem"
+              color="#57606f"
+              bg="transparent"
+              _onClick={() => {
+                history.push(`/write/${props.id}`);
+              }}
+            >
+              <BorderColorIcon style={{ fontSize: "2.5rem" }} />
+            </Button>
+            <Text margin="3rem 0 2rem 0" size="2rem" color="#212121" bold>
+              게시글 작성
+            </Text>
+          </Grid>
+        </Grid>
+        <hr style={{ color: "gray", size: "0.1rem" }} />
+        <Grid is_flex wrap padding="3.6rem">
+          <Post />
+          <Post />
+          <Post />
+          <Post />
         </Grid>
       </Grid>
     </Grid>
