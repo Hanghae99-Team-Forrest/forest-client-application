@@ -2,11 +2,11 @@ import styled from "styled-components";
 import React from "react";
 
 const Image = (props) => {
-  const { shape, src, size, children } = props;
-
+  const { shape, src, size, children, radius } = props;
   const styles = {
     src: src,
     size: size,
+    radius: radius,
   };
 
   if (shape === "circle") {
@@ -35,6 +35,7 @@ Image.defaultProps = {
   shape: "circle",
   src: "https://mean0images.s3.ap-northeast-2.amazonaws.com/4.jpeg",
   size: 3.6,
+  radius: "",
 };
 
 const ImageDefault = styled.div`
@@ -58,6 +59,7 @@ const AspectInner = styled.div`
   background-image: url("${(props) => props.src}");
   background-position: center;
   background-size: cover;
+  ${(props) => (props.radius ? `border-radius: 0.5rem;` : "")}
 `;
 
 const ImageCircle = styled.div`

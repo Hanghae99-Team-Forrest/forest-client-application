@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Grid, Text, Image, Input } from "../elements";
+import { Grid, Text } from "../elements";
 import DropDownList from "../components/DropDownList";
 import ReviewContents from "../components/ReviewContent";
 
@@ -30,20 +30,12 @@ const ReviewWrite = (props) => {
           리뷰 작성
         </Text>
       </Grid>
-
-      <Grid borderBottom="1px solid #bdbdbd" is_flex="t">
-        {window.innerWidth > 500 ? (
-          <DropDownList />
-        ) : (
-          <DropDownList shape="no_flex" />
-        )}
+      <Grid borderBottom="1px solid #bdbdbd">
+        <DropDownList />
       </Grid>
-
-      {window.innerWidth > 500 ? (
+      <Grid margin="0 0 10rem">
         <ReviewContents />
-      ) : (
-        <ReviewContents shape="no_flex" />
-      )}
+      </Grid>
     </React.Fragment>
   );
 };

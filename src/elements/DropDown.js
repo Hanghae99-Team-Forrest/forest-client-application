@@ -47,7 +47,7 @@ export default function DropDown(props) {
           variant="contained"
           color="secondary"
           onClick={handleClick}
-          style={{width: '13rem', margin: '0 auto'}}
+          style={{width: '13rem', margin: '0 auto', minWidth: '10rem', padding: '1rem'}}
         >
           <Grid is_flex="t">
             <Grid margin="0 1rem 0 0">
