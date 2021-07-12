@@ -1,8 +1,12 @@
 import React from "react";
 
+import { useDispatch, useSelector } from "react-redux";
+import { actionCreators as testActions } from "../redux/modules/test";
 import { Grid, Text, Image, Input, Button } from "../elements";
 
 const ReviewContents = (props) => {
+  const dispatch = useDispatch();
+
   const fileInput = React.useRef();
   const [title, setTitle] = React.useState("");
   const [contents, setContents] = React.useState("");
@@ -28,6 +32,7 @@ const ReviewContents = (props) => {
 
   // 리뷰 저장
   const addReview = () => {
+    dispatch(testActions.addPostAX(title, contents))
     console.log(title, contents, nick);
   };
 
