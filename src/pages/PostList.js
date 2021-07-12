@@ -74,18 +74,28 @@ const PostList = (props) => {
               color="#57606f"
               bg="transparent"
               _onClick={() => {
-                history.push(`/write/${props.id}`);
+                history.push(`/review`);
               }}
+              cursor="true"
             >
               <BorderColorIcon style={{ fontSize: "2.5rem" }} />
             </Button>
-            <Text margin="3rem 0 2rem 0" size="2rem" color="#212121" bold>
+            <Text
+              margin="3rem 0 2rem 0"
+              size="2rem"
+              color="#212121"
+              bold
+              _onClick={() => {
+                history.push("/review");
+              }}
+              cursor="true"
+            >
               게시글 작성
             </Text>
           </Grid>
         </Grid>
         <hr style={{ color: "gray", size: "0.1rem" }} />
-        <Grid is_flex wrap padding="3.6rem">
+        <Grid is_flex wrap="true" padding="3.6rem">
           <Post />
           <Post />
           <Post />

@@ -12,7 +12,7 @@ const Post = (props) => {
   
   return (
     <React.Fragment>
-      <Grid width="26rem" height="40rem" margin="0 0 5rem 0" radius shadow>
+      <Grid width="26rem" height="40rem" margin="0 0 5rem 0" radius="true" shadow>
         <Image shape="rectangle" src={props.image_url} />
         <Grid is_flex height="5rem" padding="0 0.5rem 0 0.7rem">
           <Text size="2rem" margin="0 0 0 1rem" bold>{props.title}</Text>

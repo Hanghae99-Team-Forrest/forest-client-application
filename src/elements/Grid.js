@@ -72,7 +72,7 @@ Grid.defaultProps = {
   bg: false,
   center: false,
   maxWidth: false,
-  radius: false,
+  radius: "",
   borderBottom: false,
   minWidth: false,
   minHeight: false,
@@ -82,7 +82,7 @@ Grid.defaultProps = {
   left: false,
   right: false,
   maxHeight: false,
-  wrap: false,
+  wrap: "",
 };
 
 const GridBox = styled.div`
