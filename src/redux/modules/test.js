@@ -16,7 +16,7 @@ const initialState = {
 
 const addPostAX = (post) => {
   return function (dispatch, getState, { history }) {
-    // const axios = require("axios");
+
     const _image = getState().image.preview;
 
     // const formData = new FormData();
@@ -83,7 +83,6 @@ const getPostAX = () => {
   return function (dispatch, getState, { history }) {
     const _post = getState().test.t_list;
 
-    const axios = require("axios");
     const headers = {
       "Content-Type": `application/json`,
       "Access-Control-Allow-Origin": "*",
