@@ -16,9 +16,6 @@ function App() {
   const dispatch = useDispatch();
 
 
-  React.useEffect(() => {
-  }, []);
-
   return (
     <React.Fragment>
       <Grid>
