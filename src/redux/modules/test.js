@@ -11,6 +11,7 @@ const addTest = createAction(ADD_TEST, (test) => ({ test }));
 
 const initialState = {
   t_list: [],
+  list: [{id: 0, title: 'title'}]
 };
 
 const addPostAX = (post) => {
@@ -31,12 +32,16 @@ const addPostAX = (post) => {
       .post(
         "http://localhost:4000/post",
         // formData,
-        {title: post.title, image: post.image, content: post.content},
+        { title: post.title, image: post.image, content: post.content },
         { headers: headers }
       )
-      .then(function (response) {
-        console.log(response);
-        const posts = { title: post.title, content: post.content, id: response.id };
+      .then(function (res) {
+        console.log(res);
+        const posts = {
+          title: res.data.title,
+          content: res.data.content,
+          id: res.data.id,
+        };
         dispatch(addTest(posts));
         window.alert("게시글 작성 완료!");
         history.replace("/");
@@ -49,7 +54,6 @@ const addPostAX = (post) => {
 
 const getPostAX = () => {
   return function (dispatch, getState, { history }) {
-
     const _post = getState().test.t_list;
 
     const axios = require("axios");
@@ -61,7 +65,6 @@ const getPostAX = () => {
     axios
       .get("http://localhost:4000/post")
       .then((res) => {
-        
         let post_list = [];
         res.data.forEach((_post) => {
           console.log(_post);
@@ -71,14 +74,13 @@ const getPostAX = () => {
             title: _post.title,
             image: _post.image,
             content: _post.content,
-          }
-          post_list.push(post)
-        })
-
-        // // post_list.unshift(..._post)
-        // dispatch(setTest(post_list))
-        // console.log(res);
-        // console.log(res.data);
+          };
+          post_list.push(post);
+        });
+        dispatch(setTest(post_list));
+        console.log(res);
+        console.log(res.data);
+        console.log(post_list);
       })
       .catch((err) => {
         console.log(err);
@@ -100,12 +102,12 @@ export default handleActions(
             return acc;
           }
         }, []);
+        //   if (action.payload.paging) {
+        //     draft.paging = action.payload.paging;
+        //   }
 
-      //   if (action.payload.paging) {
-      //     draft.paging = action.payload.paging;
-      //   }
-
-      //   draft.is_loading = false;
+        //   draft.is_loading = false;
+        console.log(draft.t_list);
       }),
 
     [ADD_TEST]: (state, action) =>

@@ -8,16 +8,16 @@ import BorderColorIcon from "@material-ui/icons/BorderColor";
 
 import { useDispatch, useSelector } from "react-redux";
 import { history } from "../redux/configureStore";
-import { actionCreators as postActions } from "../redux/modules/test";
+import { actionCreators as testActions } from "../redux/modules/test";
 
 const PostList = (props) => {
   const dispatch = useDispatch();
   const test_post = useSelector((state) => state.test.t_list);
+  console.log(test_post);
 
   React.useEffect(() => {
     if (test_post.length === 0) {
-      dispatch(postActions.getPostAX());
-      console.log(test_post);
+      dispatch(testActions.getPostAX());
     }
   }, []);
 
@@ -102,13 +102,14 @@ const PostList = (props) => {
         <hr style={{ color: "gray", size: "0.1rem" }} />
         <Grid is_flex wrap="true" padding="3.6rem">
           {test_post.map((p, idx) => {
-            <Post key={p.id} {...p} />;
+            return <Post key={p.id} {...p} />;
           })}
         </Grid>
       </Grid>
     </Grid>
   );
 };
+
 PostList.defaultProps = {
   margin: false,
   width: "100%",

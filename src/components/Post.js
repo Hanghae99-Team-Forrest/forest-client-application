@@ -11,13 +11,12 @@ import { history } from "../redux/configureStore";
 import { actionCreators as testActions } from "../redux/modules/test";
 
 const Post = (props) => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  // const list = useSeletor((state) => state.)
-  React.useEffect(() => {
-    console.log(props)
-    // dispatch(testActions.getPostAX());
-  });
+  // React.useEffect(() => {
+  //   console.log(props.id)
+  // },[props]);
+
   return (
     <React.Fragment>
       <Grid
@@ -27,7 +26,7 @@ const Post = (props) => {
         radius="true"
         shadow
       >
-        <Image shape="rectangle" src={props.image_url} />
+        <Image shape="rectangle" src={props.image} />
         <Grid is_flex height="5rem" padding="0 0.5rem 0 0.7rem">
           <Text size="2rem" margin="0 0 0 1rem" bold>
             {props.title}
