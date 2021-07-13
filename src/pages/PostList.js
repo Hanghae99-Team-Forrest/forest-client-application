@@ -16,8 +16,8 @@ const PostList = (props) => {
 
   React.useEffect(() => {
     if (test_post.length === 0) {
-      console.log(test_post);
       dispatch(postActions.getPostAX());
+      console.log(test_post);
     }
   }, []);
 

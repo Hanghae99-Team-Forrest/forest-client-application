@@ -36,8 +36,8 @@ const addPostAX = (post) => {
       )
       .then(function (response) {
         console.log(response);
-        // const posts = { title: post.title, content: post.content, id: response.id };
-        // dispatch(addTest(posts));
+        const posts = { title: post.title, content: post.content, id: response.id };
+        dispatch(addTest(posts));
         window.alert("게시글 작성 완료!");
         history.replace("/");
       })
@@ -61,9 +61,11 @@ const getPostAX = () => {
     axios
       .get("http://localhost:4000/post")
       .then((res) => {
-
+        
         let post_list = [];
         res.data.forEach((_post) => {
+          console.log(_post);
+          
           let post = {
             id: _post.id,
             title: _post.title,
@@ -73,10 +75,10 @@ const getPostAX = () => {
           post_list.push(post)
         })
 
-        post_list.unshift(..._post)
-        dispatch(setTest(post_list))
-        console.log(res);
-        console.log(res.data);
+        // // post_list.unshift(..._post)
+        // dispatch(setTest(post_list))
+        // console.log(res);
+        // console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -115,6 +117,7 @@ export default handleActions(
 );
 
 const actionCreators = {
+  setTest,
   addTest,
   addPostAX,
   getPostAX,
