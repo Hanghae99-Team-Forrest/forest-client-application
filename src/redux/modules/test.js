@@ -13,9 +13,15 @@ const initialState = {
   t_list: [],
 };
 
-const addPostAX = (title, contents) => {
+const addPostAX = (post) => {
   return function (dispatch, getState, { history }) {
     const axios = require("axios");
+
+    // const formData = new FormData();
+    // formData.append("image", post.image);
+    // formData.append("title", post.title);
+    // formData.append("content", post.content);
+
     const headers = {
       "Content-Type": `application/json`,
       "Access-Control-Allow-Origin": "*",
@@ -23,14 +29,15 @@ const addPostAX = (title, contents) => {
 
     axios
       .post(
-        "http://localhost:4000/posts",
-        { title: title, content: contents },
+        "http://localhost:4000/post",
+        // formData,
+        {title: post.title, image: post.image, content: post.content},
         { headers: headers }
       )
       .then(function (response) {
         console.log(response);
-        const posts = { title: title, content: contents, id: response.id };
-        dispatch(addTest(posts));
+        // const posts = { title: post.title, content: post.content, id: response.id };
+        // dispatch(addTest(posts));
         window.alert("게시글 작성 완료!");
         history.replace("/");
       })
@@ -42,6 +49,9 @@ const addPostAX = (title, contents) => {
 
 const getPostAX = () => {
   return function (dispatch, getState, { history }) {
+
+    const _post = getState().test.t_list;
+
     const axios = require("axios");
     const headers = {
       "Content-Type": `application/json`,
@@ -49,8 +59,22 @@ const getPostAX = () => {
     };
 
     axios
-      .get("http://localhost:4000/posts")
+      .get("http://localhost:4000/post")
       .then((res) => {
+
+        let post_list = [];
+        res.data.forEach((_post) => {
+          let post = {
+            id: _post.id,
+            title: _post.title,
+            image: _post.image,
+            content: _post.content,
+          }
+          post_list.push(post)
+        })
+
+        post_list.unshift(..._post)
+        dispatch(setTest(post_list))
         console.log(res);
         console.log(res.data);
       })
@@ -75,11 +99,11 @@ export default handleActions(
           }
         }, []);
 
-        if (action.payload.paging) {
-          draft.paging = action.payload.paging;
-        }
+      //   if (action.payload.paging) {
+      //     draft.paging = action.payload.paging;
+      //   }
 
-        draft.is_loading = false;
+      //   draft.is_loading = false;
       }),
 
     [ADD_TEST]: (state, action) =>

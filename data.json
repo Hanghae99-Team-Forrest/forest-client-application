@@ -18,7 +18,18 @@
       "title": "메타세콰이어 숲",
       "content": "쭉 뻗은 나무 숲길을 걸어보세요 :)",
       "is_open": 1,
-      "createdAt": "2021-07-11 10:00:00"
+      "createdAt": "2021-07-11 10:00:00",
+      "updatedAt": "2021-07-12 10:00:00(수정일)",
+      "image": "https://www.mercurynews.com/wp-content/uploads/2021/04/SJM-L-ROADTRIP-0502-01.jpg?w=1024"
+    },
+    {
+      "id": 2
+    },
+    {
+      "title": "제목임",
+      "image": {},
+      "content": "리뷰임",
+      "id": 3
     }
   ],
   "category": [

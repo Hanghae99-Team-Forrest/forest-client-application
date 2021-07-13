@@ -12,9 +12,11 @@ import { actionCreators as testActions } from "../redux/modules/test";
 
 const Post = (props) => {
   const dispatch = useDispatch();
+
   // const list = useSeletor((state) => state.)
   React.useEffect(() => {
-    dispatch(testActions.getPostAX());
+    console.log(props)
+    // dispatch(testActions.getPostAX());
   });
   return (
     <React.Fragment>
