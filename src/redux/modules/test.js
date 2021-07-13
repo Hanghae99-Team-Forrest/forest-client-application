@@ -67,6 +67,8 @@ const getPostAX = () => {
       .then((res) => {
         let post_list = [];
         res.data.forEach((_post) => {
+          console.log(_post);
+          
           let post = {
             id: _post.id,
             title: _post.title,
@@ -75,7 +77,6 @@ const getPostAX = () => {
           };
           post_list.push(post);
         });
-
         dispatch(setTest(post_list));
         console.log(res);
         console.log(res.data);
@@ -118,6 +119,7 @@ export default handleActions(
 );
 
 const actionCreators = {
+  setTest,
   addTest,
   addPostAX,
   getPostAX,
