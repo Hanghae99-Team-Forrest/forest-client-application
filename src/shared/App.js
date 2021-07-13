@@ -1,7 +1,7 @@
 import "./App.css";
 import React from "react";
-import TestList from "../pages/TestList";
-import TestWrite from "../pages/TestWrite";
+import PostList from "../pages/PostList";
+import PostWrite from "../pages/PostWrite";
 
 import { BrowserRouter, Route } from "react-router-dom";
 import { ConnectedRouter } from "connected-react-router";
@@ -10,21 +10,18 @@ import { useDispatch } from "react-redux";
 
 
 import { Grid, Button } from "../elements";
-
+import ReviewWrite from "../pages/ReviewWrite";
 
 function App() {
   const dispatch = useDispatch();
 
 
-  React.useEffect(() => {
-  }, []);
-
   return (
     <React.Fragment>
       <Grid>
         <ConnectedRouter history={history}>
-          <Route path="/" exact component={TestList} />
-          <Route path="/write" component={TestWrite} />
+          <Route path="/" exact component={PostList} />
+          <Route path="/review" component={ReviewWrite} />
         </ConnectedRouter>
       </Grid>
     </React.Fragment>

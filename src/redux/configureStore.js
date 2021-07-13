@@ -5,12 +5,14 @@ import { connectRouter } from "connected-react-router";
 
 import User from "./modules/user";
 import Post from "./modules/post";
-import Image from "./modules/image";
+import Image from "./modules/imageAX";
 import Comment from "./modules/comment";
+import Test from "./modules/test";
 
 export const history = createBrowserHistory();
 
 const rootReducer = combineReducers({
+  test: Test,
   user: User,
   post: Post,
   image: Image,

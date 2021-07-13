@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { actionCreators as postActions } from "../redux/modules/post";
 
-const TestWrite = (props) => {
+const PostWrite = (props) => {
   const dispatch = useDispatch();
 
   const [title, setTitle] = React.useState("");
@@ -41,7 +41,7 @@ const TestWrite = (props) => {
   );
 };
 
-TestWrite.defaultProps = {};
+PostWrite.defaultProps = {};
 
 const Div = styled.div`
   display: flex;
@@ -53,4 +53,4 @@ const Div = styled.div`
   background-color: cadetblue;
   flex-direction: column;
 `;
-export default TestWrite;
+export default PostWrite;
