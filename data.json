@@ -7,8 +7,7 @@
       "nickName": "Leon",
       "profile": "https://mean0images.s3.ap-northeast-2.amazonaws.com/4.jpeg",
       "kakaoID": "yjh8806@hotmail.co.kr",
-      "createdAt": "2021-07-11 10:00:00",
-      "updatedAt": "2021-07-12 10:00:00(수정일)"
+      "createdAt": "2021-07-11 10:00:00"
     }
   ],
   "post": [
@@ -37,8 +36,7 @@
     {
       "id": 1,
       "name": "valley",
-      "createdAt": "2021-07-11 10:00:00",
-      "updatedAt": "2021-07-12 10:00:00(수정일)"
+      "createdAt": "2021-07-11 10:00:00"
     }
   ],
   "like": [
@@ -47,8 +45,7 @@
       "userId": 1,
       "boardId": "ALSKDJ87AN%LKJ42%LKJ",
       "likeCnt": 0,
-      "createdAt": "2021-07-11 10:00:00",
-      "updatedAt": "2021-07-12 10:00:00(수정일)"
+      "createdAt": "2021-07-11 10:00:00"
     }
   ],
   "comment": [
@@ -58,8 +55,7 @@
       "boardId": 1,
       "nickName": "Leon",
       "content": "여기 완전 좋아요!! 무조건 추천!!",
-      "createdAt": "2021-07-11 10:00:00",
-      "updatedAt": "2021-07-12 10:00:00(수정일)"
+      "createdAt": "2021-07-11 10:00:00"
     }
   ]
 }
