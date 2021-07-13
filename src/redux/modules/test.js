@@ -17,6 +17,7 @@ const initialState = {
 const addPostAX = (post) => {
   return function (dispatch, getState, { history }) {
     const axios = require("axios");
+    const _image = getState().image.preview;
 
     // const formData = new FormData();
     // formData.append("image", post.image);
@@ -32,7 +33,7 @@ const addPostAX = (post) => {
       .post(
         "http://localhost:4000/post",
         // formData,
-        { title: post.title, image: post.image, content: post.content },
+        { title: post.title, image: _image, content: post.content },
         { headers: headers }
       )
       .then(function (res) {
@@ -41,6 +42,7 @@ const addPostAX = (post) => {
           title: res.data.title,
           content: res.data.content,
           id: res.data.id,
+          image: res.data.image,
         };
         dispatch(addTest(posts));
         window.alert("게시글 작성 완료!");
