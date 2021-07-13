@@ -6,16 +6,21 @@ import Post from "../components/Post";
 import { Grid, Image, Text, Input, Button } from "../elements";
 import BorderColorIcon from "@material-ui/icons/BorderColor";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { history } from "../redux/configureStore";
 import { actionCreators as postActions } from "../redux/modules/test";
 
 const PostList = (props) => {
   const dispatch = useDispatch();
+  const test_post = useSelector((state) => state.test.t_list);
 
   React.useEffect(() => {
-    dispatch(postActions.getPostAX());
-  });
+    if (test_post.length === 0) {
+      console.log(test_post);
+      dispatch(postActions.getPostAX());
+    }
+  }, []);
+
   return (
     <Grid>
       <Grid position="relative">
@@ -96,10 +101,9 @@ const PostList = (props) => {
         </Grid>
         <hr style={{ color: "gray", size: "0.1rem" }} />
         <Grid is_flex wrap="true" padding="3.6rem">
-          <Post />
-          <Post />
-          <Post />
-          <Post />
+          {test_post.map((p, idx) => {
+            <Post key={p.id} {...p} />;
+          })}
         </Grid>
       </Grid>
     </Grid>
