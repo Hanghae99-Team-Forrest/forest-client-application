@@ -72,7 +72,6 @@ const addPostAX = (post) => {
           score: post.score,
         },
         // form,
-
         { headers: headers }
       )
       .then(function (res) {
@@ -119,6 +118,7 @@ const getPostAX = () => {
             title: _post.title,
             image: _post.image,
             content: _post.content,
+            categoryId: _post.categoryId
           };
           post_list.push(post);
         });

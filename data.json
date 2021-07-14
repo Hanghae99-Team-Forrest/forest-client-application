@@ -29,7 +29,8 @@
       "title": "제목임",
       "image": {},
       "content": "리뷰임",
-      "id": 3
+      "id": 3,
+      "categoryId": 1
     },
     {
       "title": "title test",
