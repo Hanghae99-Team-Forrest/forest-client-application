@@ -55,10 +55,10 @@ const PostList = (props) => {
             <Text is_main>#산</Text>
           </Button>
           <Button width="8rem" bg="#78e08f" radius="0.5rem" shadow cursor _onClick={() => {changeCtrNum(2)}}>
-            <Text is_main>#계곡</Text>
+            <Text is_main>#바다</Text>
           </Button>
           <Button width="8rem" bg="#78e08f" radius="0.5rem" shadow cursor _onClick={() => {changeCtrNum(3)}}>
-            <Text is_main>#바다</Text>
+            <Text is_main>#계곡</Text>
           </Button>
         </Grid>
       </Grid>
