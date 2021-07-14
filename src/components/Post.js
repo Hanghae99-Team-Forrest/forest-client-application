@@ -11,7 +11,6 @@ import { history } from "../redux/configureStore";
 import { actionCreators as testActions } from "../redux/modules/test";
 
 const Post = (props) => {
-
   return (
     <React.Fragment>
       <Grid
@@ -21,12 +20,19 @@ const Post = (props) => {
         radius="true"
         shadow
       >
-        <Image shape="rectangle" src={props.image} />
+        <Image
+          shape="rectangle"
+          src={props.image}
+          cursor
+          _onClick={() => {
+            history.push(`/post/${props.id}`);
+          }}
+        />
         <Grid is_flex height="5rem" padding="0 0.5rem 0 0.7rem">
           <Text size="2rem" margin="0 0 0 1rem" bold>
             {props.title}
           </Text>
-          <div>
+          {/* <div>
             {props.is_me && (
               <Button
                 width="auto"
@@ -49,13 +55,13 @@ const Post = (props) => {
                 padding="0.4rem"
                 radius="0.5rem"
                 _onClick={() => {
-                  // history.push(`/write/${props.id}`);
+                  history.push(`/post/${props.id}`);
                 }}
               >
                 <DeleteForeverIcon />
               </Button>
             )}
-          </div>
+          </div> */}
         </Grid>
         <Grid flex width="auto" height="5rem" margin="0 0 0 1rem">
           <Image shape="circle" src={props.src} />

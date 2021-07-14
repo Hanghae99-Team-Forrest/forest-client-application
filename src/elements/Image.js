@@ -2,11 +2,12 @@ import styled from "styled-components";
 import React from "react";
 
 const Image = (props) => {
-  const { shape, src, size, children, radius } = props;
+  const { shape, src, size, children, radius, _onClick, cursor } = props;
   const styles = {
     src: src,
     size: size,
     radius: radius,
+    cursor: cursor,
   };
 
   if (shape === "circle") {
@@ -16,7 +17,7 @@ const Image = (props) => {
   if (shape === "rectangle") {
     return (
       <AspectOutter>
-        <AspectInner {...styles}></AspectInner>
+        <AspectInner {...styles} onClick={_onClick}></AspectInner>
       </AspectOutter>
     );
   }
@@ -36,6 +37,8 @@ Image.defaultProps = {
   src: "https://mean0images.s3.ap-northeast-2.amazonaws.com/4.jpeg",
   size: 3.6,
   radius: "",
+  _onClick: () => {},
+  cursor: "",
 };
 
 const ImageDefault = styled.div`
@@ -60,6 +63,7 @@ const AspectInner = styled.div`
   background-position: center;
   background-size: cover;
   ${(props) => (props.radius ? `border-radius: 0.5rem;` : "")}
+  ${(props) => (props.cursor? `cursor: pointer;`: '')}
 `;
 
 const ImageCircle = styled.div`

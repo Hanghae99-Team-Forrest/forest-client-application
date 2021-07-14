@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Button = (props) => {
-  const { _onClick, children, margin, width, height, padding, bg, color, radius, shadow, size, cursor } = props;
+  const { _onClick, children, margin, width, height, padding, bg, color, radius, shadow, size, cursor, border } = props;
 
   const styles = {
     margin: margin,
@@ -15,6 +15,7 @@ const Button = (props) => {
     shadow: shadow,
     size: size,
     cursor: cursor,
+    border: border,
   };
 
   return (
@@ -37,6 +38,7 @@ Button.defaultProps = {
   radius: "",
   shadow: false,
   cursor: "",
+  border: "",
 };
 
 const ElButton = styled.button`
@@ -52,6 +54,7 @@ const ElButton = styled.button`
   ${(props) => (props.margin ? `margin: ${props.margin};` : "")}
   ${(props) => (props.shadow ? `box-shadow: 0.5rem 0.5rem 0.5rem #dcdde1;` : "")}
   ${(props) => (props.cursor? `cursor: pointer;`: '')};
+  ${(props) => (props.border? `border: ${props.border}` : "")}
 `;
 
 

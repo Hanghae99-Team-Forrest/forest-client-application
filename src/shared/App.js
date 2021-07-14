@@ -2,6 +2,7 @@ import "./App.css";
 import React from "react";
 import PostList from "../pages/PostList";
 import PostWrite from "../pages/PostWrite";
+import PostDetail from "../pages/PostDetail";
 
 import { BrowserRouter, Route } from "react-router-dom";
 import { ConnectedRouter } from "connected-react-router";
@@ -22,6 +23,7 @@ function App() {
         <ConnectedRouter history={history}>
           <Route path="/" exact component={PostList} />
           <Route path="/review" component={ReviewWrite} />
+          <Route path="/post/:id" exact component={PostDetail}/>
         </ConnectedRouter>
       </Grid>
     </React.Fragment>
