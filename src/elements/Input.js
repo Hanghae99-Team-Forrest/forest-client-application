@@ -67,7 +67,10 @@ const ElTextarea = styled.textarea`
   padding: 1.2rem 0.4rem;
   box-sizing: border-box;
   resize: none;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
+  &::placeholder{
+    font-size: 1.2rem;
+  }
 `;
 
 const ElInput = styled.input`
@@ -76,6 +79,9 @@ const ElInput = styled.input`
   width: 100%;
   padding: 1.2rem 0.4rem;
   box-sizing: border-box;
+  &::placeholder{
+    font-size: 1.2rem;
+  }
 `;
 
 export default Input;

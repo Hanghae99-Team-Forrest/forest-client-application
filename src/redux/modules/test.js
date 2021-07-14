@@ -57,6 +57,9 @@ const addPostAX = (post) => {
     form.append("categoryId", post.category);
     form.append("is_open", post.public);
     form.append("score", post.score);
+    form.append("userName", post.userName);
+    form.append("postPassword", post.postPassword);
+
 
     axios
       .post(
@@ -70,6 +73,9 @@ const addPostAX = (post) => {
           categoryId: post.category,
           is_open: post.public,
           score: post.score,
+          userName: post.userName,
+          postPassword: post.postPassword,
+
         },
         // form,
         { headers: headers }
@@ -86,6 +92,9 @@ const addPostAX = (post) => {
           categoryId: res.data.categoryId,
           is_open: res.data.is_open,
           score: res.data.score,
+          userName: res.data.userName,
+          postPassword: res.data.postPassword,
+
         };
         dispatch(addTest(posts));
         window.alert("게시글 작성 완료!");
