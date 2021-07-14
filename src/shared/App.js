@@ -22,7 +22,8 @@ function App() {
       <Grid>
         <ConnectedRouter history={history}>
           <Route path="/" exact component={PostList} />
-          <Route path="/review" component={ReviewWrite} />
+          <Route path="/review" exact component={ReviewWrite} />
+          <Route path="/review/:id" exact component={ReviewWrite} />
           <Route path="/post/:id" exact component={PostDetail}/>
         </ConnectedRouter>
       </Grid>

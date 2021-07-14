@@ -1,23 +1,46 @@
 import React from "react";
 import { actionCreators as imageActions } from "../redux/modules/imageAX";
-
+import { history } from "../redux/configureStore";
 import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as testActions } from "../redux/modules/test";
 import { Grid, Text, Image, Input, Button } from "../elements";
 
 const ReviewContents = (props) => {
   const dispatch = useDispatch();
+  const review_list = useSelector((state) => state.test.t_list);
   const preview = useSelector((state) => state.image.preview);
   const category = useSelector((state) => state.image.category);
   const is_public = useSelector((sate) => sate.image.public);
   const score = useSelector((sate) => sate.image.score);
 
+  // 수정 판별
+  const post_id = props.match.params.id;
+  const is_edit = post_id ? true : false;
+  let _post = is_edit ? review_list.find((l) => l.id === parseInt(post_id)) : null;
+
+  React.useEffect(() => {
+    console.log(_post);
+    if (is_edit && !_post) {
+      console.log("포스트 정보 없음");
+      history.goBack();
+      return;
+    }
+    if (is_edit) {
+      dispatch(imageActions.setPreview(_post.image));
+      dispatch(imageActions.setCategory(_post.categoryId));
+      dispatch(imageActions.setPublic(_post.is_open));
+      dispatch(imageActions.setScore(_post.score));
+    } else {
+      dispatch(imageActions.setPreview(null));
+    }
+  }, []);
+
   const fileInput = React.useRef();
-  const [title, setTitle] = React.useState("");
-  const [contents, setContents] = React.useState("");
-  const [nick, setNick] = React.useState("");
-  const [post_pw, setPostPw] = React.useState("");
-  const [image, setImage] = React.useState("");
+  const [title, setTitle] = React.useState(_post ? _post.title : "");
+  const [contents, setContents] = React.useState(_post ? _post.content : "");
+  const [nick, setNick] = React.useState(_post ? _post.userName : "");
+  const [post_pw, setPostPw] = React.useState(_post ? _post.postPassword : "");
+  const [image, setImage] = React.useState(_post ? _post.image : "");
 
   // 리뷰 제목
   const changeTitle = (e) => {
@@ -74,6 +97,21 @@ const ReviewContents = (props) => {
     dispatch(testActions.addPostAX(post));
     console.log(typeof image);
     console.log(post);
+  };
+
+  // 리뷰 저장
+  const editReview = () => {
+    let post = {
+      title: title,
+      content: contents,
+      image: image,
+      category: category,
+      public: is_public,
+      score: score,
+      userName: nick,
+      postPassword: post_pw,
+    };
+    dispatch(testActions.editPostAX(post_id, post));
   };
 
   return (
@@ -157,19 +195,33 @@ const ReviewContents = (props) => {
               ></Input>
             </Grid>
           </Grid>
-
+          
           <Grid maxWidth="70rem" margin="0 auto 2rem">
-            <Button
-              margin="3rem auto 0 0"
-              _onClick={addReview}
-              bg="#4cd137"
-              radius="0.4rem"
-              height="4rem"
-            >
-              <Text color="white" margin="0" bold="t" size="1.6rem">
-                업로드
-              </Text>
-            </Button>
+            {is_edit ? (
+              <Button
+                margin="3rem auto 0 0"
+                _onClick={editReview}
+                bg="#4cd137"
+                radius="0.4rem"
+                height="4rem"
+              >
+                <Text color="white" margin="0" bold="t" size="1.6rem">
+                  수정하기
+                </Text>
+              </Button>
+            ) : (
+              <Button
+                margin="3rem auto 0 0"
+                _onClick={addReview}
+                bg="#4cd137"
+                radius="0.4rem"
+                height="4rem"
+              >
+                <Text color="white" margin="0" bold="t" size="1.6rem">
+                  업로드
+                </Text>
+              </Button>
+            )}
           </Grid>
         </Grid>
       </Grid>
