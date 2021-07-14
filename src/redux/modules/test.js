@@ -120,27 +120,69 @@ const getPostAX = () => {
       .then((res) => {
         let post_list = [];
         res.data.forEach((_post) => {
-          console.log(_post);
 
           let post = {
             id: _post.id,
             title: _post.title,
             image: _post.image,
             content: _post.content,
-            categoryId: _post.categoryId
+            categoryId: _post.categoryId,
+            userName: _post.userName,
           };
           post_list.push(post);
         });
         dispatch(setTest(post_list));
-        console.log(res);
-        console.log(res.data);
-        console.log(post_list);
       })
       .catch((err) => {
         console.log(err);
       });
   };
 };
+
+// const getOnePostAX = (id) => {
+//   return function (dispatch, getState, { history }) {
+//     const headers = {
+//       "Content-Type": `application/json`,
+//       "Access-Control-Allow-Origin": "*",
+//     };
+//     axios.get("http://localhost:4000/post").then((res) => {
+//       let post_list = [];
+//       let idx = res.data.findIndex((p) => p.id === parseInt(id));
+//       let _post = res.data[idx];
+
+//       let post = {
+//         id: _post.id,
+//         title: _post.title,
+//         image: _post.image,
+//         content: _post.content,
+//         categoryId: _post.categoryId,
+//       };
+//       post_list.push(post);
+//       dispatch(setTest(post_list));
+//     });
+//   };
+// };
+
+// const deletePostAX = (id) => {
+//   return function (dispatch, getState, { history }) {
+//     if (!userPassword) { userPassword 예상
+//       window.alert("삭제할 수 없는 게시글입니다");
+//       return;
+//     }
+
+//  firestore 예시 참고
+//     postDB
+//       .doc(id)
+//       .delete()
+//       .then((res) => {
+//         dispatch(deletePost(id));
+//         history.replace("/");
+//       })
+//       .catch((err) => {
+//         console.log(err);
+//       });
+//   };
+// };
 
 export default handleActions(
   {
@@ -161,7 +203,6 @@ export default handleActions(
         //   }
 
         //   draft.is_loading = false;
-        console.log(draft.t_list);
       }),
 
     [ADD_TEST]: (state, action) =>
@@ -177,6 +218,7 @@ const actionCreators = {
   addTest,
   addPostAX,
   getPostAX,
+  // getOnePostAX,
 };
 
 export { actionCreators };

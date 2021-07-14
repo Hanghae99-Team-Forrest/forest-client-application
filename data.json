@@ -20,7 +20,8 @@
       "is_open": 1,
       "createdAt": "2021-07-11 10:00:00",
       "updatedAt": "2021-07-12 10:00:00(수정일)",
-      "image": "https://www.mercurynews.com/wp-content/uploads/2021/04/SJM-L-ROADTRIP-0502-01.jpg?w=1024"
+      "image": "https://www.mercurynews.com/wp-content/uploads/2021/04/SJM-L-ROADTRIP-0502-01.jpg?w=1024",
+      "userName": "frankie"
     },
     {
       "id": 2
@@ -130,6 +131,24 @@
       "userName": "sujin",
       "postPassword": "1234",
       "id": 18
+    },
+    {
+      "title": "카테고리",
+      "image": {},
+      "content": "카테고리",
+      "categoryId": 1,
+      "is_open": null,
+      "score": null,
+      "id": 19
+    },
+    {
+      "title": "바다",
+      "image": "",
+      "content": "바다",
+      "categoryId": 2,
+      "is_open": null,
+      "score": null,
+      "id": 20
     }
   ],
   "category": [

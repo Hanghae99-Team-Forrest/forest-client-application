@@ -10,6 +10,7 @@ const DropDownList = (props) => {
           menu_name="카테고리"
           options={["산", "바 다", "계 곡"]}
           size="0 2.6rem"
+          onclick={() => {}}
         />
         <DropDown
           menu_name="공개여부"
