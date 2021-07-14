@@ -122,12 +122,14 @@
       "id": 17
     },
     {
-      "title": "야끼소바",
+      "title": "산은 산이요",
       "image": {},
-      "content": "맛있겠다",
-      "categoryId": 3,
-      "is_open": null,
-      "score": null,
+      "content": "휴양지로 좋습니다. 재밌어요",
+      "categoryId": 1,
+      "is_open": 1,
+      "score": 4,
+      "userName": "sujin",
+      "postPassword": "1234",
       "id": 18
     },
     {

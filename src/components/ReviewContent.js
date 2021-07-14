@@ -12,11 +12,11 @@ const ReviewContents = (props) => {
   const is_public = useSelector((sate) => sate.image.public);
   const score = useSelector((sate) => sate.image.score);
 
-
   const fileInput = React.useRef();
   const [title, setTitle] = React.useState("");
   const [contents, setContents] = React.useState("");
   const [nick, setNick] = React.useState("");
+  const [post_pw, setPostPw] = React.useState("");
   const [image, setImage] = React.useState("");
 
   // 리뷰 제목
@@ -37,6 +37,11 @@ const ReviewContents = (props) => {
     //   console.log(nick);
   };
 
+  // 게시글 비번
+  const changePostPw = (e) => {
+    setPostPw(e.target.value);
+    //   console.log(nick);
+  };
 
   // 선택한 파일 정보
   const selectFile = (e) => {
@@ -63,7 +68,9 @@ const ReviewContents = (props) => {
       category: category,
       public: is_public,
       score: score,
-    }
+      userName: nick,
+      postPassword: post_pw,
+    };
     dispatch(testActions.addPostAX(post));
     console.log(typeof image);
     console.log(post);
@@ -82,7 +89,7 @@ const ReviewContents = (props) => {
           <Grid is_flex margin="0 auto" maxWidth="70rem">
             <input
               type="file"
-              onChange={(selectFile)}
+              onChange={selectFile}
               ref={fileInput}
               // disabled={uploading}
             ></input>
@@ -128,16 +135,29 @@ const ReviewContents = (props) => {
               multiLine="true"
             ></Input>
           </Grid>
-          <Grid maxWidth="70rem" margin="0 auto">
-            <Text bold="t" size="1.6rem" margin="3rem 0.5rem 1rem">
-              닉네임
-            </Text>
-            <Input
-              value={nick}
-              _onChange={changeNick}
-              placeholder="닉네임을 입력하세요"
-            ></Input>
+          <Grid is_flex="t">
+            <Grid maxWidth="70rem" margin="0 3rem auto 0">
+              <Text bold="t" size="1.6rem" margin="3rem 0.5rem 1rem">
+                닉네임
+              </Text>
+              <Input
+                value={nick}
+                _onChange={changeNick}
+                placeholder="닉네임을 입력하세요"
+              ></Input>
+            </Grid>
+            <Grid maxWidth="70rem" margin="0 auto">
+              <Text bold="t" size="1.6rem" margin="3rem 0.5rem 1rem">
+                비밀번호
+              </Text>
+              <Input
+                value={post_pw}
+                _onChange={changePostPw}
+                placeholder="게시글 비밀번호"
+              ></Input>
+            </Grid>
           </Grid>
+
           <Grid maxWidth="70rem" margin="0 auto 2rem">
             <Button
               margin="3rem auto 0 0"
