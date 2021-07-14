@@ -54,7 +54,7 @@ const addPostAX = (post) => {
 
     axios
       .post(
-        "http://33ef08a2f4f3.ngrok.io/v1/img-upload",
+        "http://f28b48e43b35.ngrok.io/v1/img-upload",
         // { title: post.title, image: file, content: post.content },
         form,
         { headers: headers }
@@ -100,6 +100,7 @@ const getPostAX = () => {
             title: _post.title,
             image: _post.image,
             content: _post.content,
+            categoryId: _post.categoryId
           };
           post_list.push(post);
         });
