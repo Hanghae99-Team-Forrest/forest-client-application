@@ -34,7 +34,7 @@ const ReviewWrite = (props) => {
         <DropDownList />
       </Grid>
       <Grid margin="0 0 10rem">
-        <ReviewContents />
+        <ReviewContents {...props}/>
       </Grid>
     </React.Fragment>
   );

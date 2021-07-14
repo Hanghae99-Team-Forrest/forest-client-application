@@ -149,6 +149,31 @@
       "is_open": null,
       "score": null,
       "id": 20
+    },
+    {
+      "title": "메타세콰이어 숲",
+      "image": "https://www.mercurynews.com/wp-content/uploads/2021/04/SJM-L-ROADTRIP-0502-01.jpg?w=1024",
+      "content": "쭉 뻗은 나무 숲길을 걸어보세요",
+      "categoryId": 1,
+      "userName": "frankie",
+      "id": 21
+    },
+    {
+      "title": "메타세콰이어 숲",
+      "image": "https://www.mercurynews.com/wp-content/uploads/2021/04/SJM-L-ROADTRIP-0502-01.jpg?w=1024",
+      "content": "쭉 뻗은 나무 숲길을 걸어보세요",
+      "categoryId": 1,
+      "userName": "frankie",
+      "id": 22
+    },
+    {
+      "title": "메타세콰이어 숲",
+      "image": "https://www.mercurynews.com/wp-content/uploads/2021/04/SJM-L-ROADTRIP-0502-01.jpg?w=1024",
+      "content": "쭉 뻗은 나무 숲길을 걸어보세요",
+      "categoryId": 1,
+      "userName": "frankie",
+      "postPassword": "1234",
+      "id": 23
     }
   ],
   "category": [

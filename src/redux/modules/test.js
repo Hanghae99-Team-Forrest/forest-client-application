@@ -5,9 +5,14 @@ import { history } from "../configureStore";
 
 const SET_TEST = "SET_TEST";
 const ADD_TEST = "ADD_TEST";
+const EDIT_TEST = "EDIT_TEST";
 
 const setTest = createAction(SET_TEST, (post_list) => ({ post_list }));
 const addTest = createAction(ADD_TEST, (test) => ({ test }));
+const editTest = createAction(EDIT_TEST, (post_id, post) => ({
+  post_id,
+  post,
+}));
 
 const initialState = {
   t_list: [],
@@ -60,7 +65,6 @@ const addPostAX = (post) => {
     form.append("userName", post.userName);
     form.append("postPassword", post.postPassword);
 
-
     axios
       .post(
         "http://localhost:4000/post",
@@ -75,7 +79,6 @@ const addPostAX = (post) => {
           score: post.score,
           userName: post.userName,
           postPassword: post.postPassword,
-
         },
         // form,
         { headers: headers }
@@ -94,7 +97,6 @@ const addPostAX = (post) => {
           score: res.data.score,
           userName: res.data.userName,
           postPassword: res.data.postPassword,
-
         };
         dispatch(addTest(posts));
         window.alert("게시글 작성 완료!");
@@ -120,7 +122,6 @@ const getPostAX = () => {
       .then((res) => {
         let post_list = [];
         res.data.forEach((_post) => {
-
           let post = {
             id: _post.id,
             title: _post.title,
@@ -135,6 +136,68 @@ const getPostAX = () => {
       })
       .catch((err) => {
         console.log(err);
+      });
+  };
+};
+
+const editPostAX = (post_id = null, post) => {
+  return function (dispatch, getState, { history }) {
+    if (!post_id) {
+      console.log("게시물 정보가 없습니다.");
+      return;
+    }
+    const headers = {
+      // "Content-Type": "multipart/form-data",
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+    };
+    let form = new FormData();
+    form.append("file", post.image);
+    form.append("title", post.title);
+    form.append("content", post.content);
+    form.append("categoryId", post.category);
+    form.append("userName", post.userName);
+    form.append("postPassword", post.postPassword);
+    form.append("id", post.id);
+    // form.append("is_open", post.public);
+    // form.append("score", post.score);
+    axios
+      .post(
+        "http://localhost:4000/post",
+        //   .post(
+        //     "http://33ef08a2f4f3.ngrok.io/v1/img-upload",
+        {
+          title: post.title,
+          image: post.image,
+          content: post.content,
+          categoryId: post.category,
+          userName: post.userName,
+          postPassword: post.postPassword,
+          id: post.id,
+          // is_open: post.public,
+          // score: post.score,
+        },
+        // form,
+        { headers: headers }
+      )
+      .then(function (res) {
+        const posts = {
+          title: res.data.title,
+          content: res.data.content,
+          id: res.data.id,
+          image: res.data.image,
+          categoryId: res.data.categoryId,
+          userName: res.data.userName,
+          postPassword: res.data.postPassword,
+          // is_open: res.data.is_open,
+          // score: res.data.score,
+        };
+        dispatch(editTest(post_id, posts));
+        window.alert("게시글 수정 완료!");
+        history.replace(`/post/${post_id}`);
+      })
+      .catch(function (error) {
+        console.log(error);
       });
   };
 };
@@ -209,6 +272,13 @@ export default handleActions(
       produce(state, (draft) => {
         draft.t_list.unshift(action.payload.test);
       }),
+    [EDIT_TEST]: (state, action) =>
+      produce(state, (draft) => {
+        let idx = draft.t_list.findIndex(
+          (p) => p.id === parseInt(action.payload.post_id)
+        );
+        draft.t_list[idx] = { ...draft.t_list[idx], ...action.payload.post };
+      }),
   },
   initialState
 );
@@ -218,6 +288,7 @@ const actionCreators = {
   addTest,
   addPostAX,
   getPostAX,
+  editPostAX,
   // getOnePostAX,
 };
 

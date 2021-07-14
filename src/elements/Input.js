@@ -43,7 +43,7 @@ const Input = (props) => {
             }}
           />
         ) : (
-          <ElInput type={type} placeholder={placeholder} onChange={_onChange} />
+          <ElInput type={type} placeholder={placeholder} onChange={_onChange} value={value}/>
         )}
       </Grid>
     </React.Fragment>
