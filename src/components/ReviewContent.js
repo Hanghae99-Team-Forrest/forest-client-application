@@ -8,6 +8,10 @@ import { Grid, Text, Image, Input, Button } from "../elements";
 const ReviewContents = (props) => {
   const dispatch = useDispatch();
   const preview = useSelector((state) => state.image.preview);
+  const category = useSelector((state) => state.image.category);
+  const is_public = useSelector((sate) => sate.image.public);
+  const score = useSelector((sate) => sate.image.score);
+
 
   const fileInput = React.useRef();
   const [title, setTitle] = React.useState("");
@@ -56,10 +60,13 @@ const ReviewContents = (props) => {
       title: title,
       content: contents,
       image: image,
+      category: category,
+      public: is_public,
+      score: score,
     }
     dispatch(testActions.addPostAX(post));
     console.log(typeof image);
-    console.log(title, contents, nick, image);
+    console.log(post);
   };
 
   return (
