@@ -11,11 +11,6 @@ import { history } from "../redux/configureStore";
 import { actionCreators as testActions } from "../redux/modules/test";
 
 const Post = (props) => {
-  // const dispatch = useDispatch();
-
-  // React.useEffect(() => {
-  //   console.log(props.id)
-  // },[props]);
 
   return (
     <React.Fragment>

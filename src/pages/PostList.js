@@ -13,7 +13,13 @@ import { actionCreators as testActions } from "../redux/modules/test";
 const PostList = (props) => {
   const dispatch = useDispatch();
   const test_post = useSelector((state) => state.test.t_list);
-  console.log(test_post);
+
+  const [ctrNum, setCtrNum] = React.useState(0);
+
+  const changeCtrNum = (id) => {
+    setCtrNum(id);
+  };
+  console.log(ctrNum);
 
   React.useEffect(() => {
     if (test_post.length === 0) {
@@ -41,14 +47,17 @@ const PostList = (props) => {
         <Text size="2rem" color="#212121" bold>
           카테고리
         </Text>
-        <Grid is_flex width="28rem">
-          <Button width="8rem" bg="#78e08f" radius="0.5rem" shadow>
+        <Grid is_flex width="36rem">
+          <Button width="8rem" bg="#78e08f" radius="0.5rem" shadow cursor _onClick={() => {changeCtrNum(0)}} >
+            <Text is_main>#전체</Text>
+          </Button>
+          <Button width="8rem" bg="#78e08f" radius="0.5rem" shadow cursor _onClick={() => {changeCtrNum(1)}}>
             <Text is_main>#산</Text>
           </Button>
-          <Button width="8rem" bg="#78e08f" radius="0.5rem" shadow>
+          <Button width="8rem" bg="#78e08f" radius="0.5rem" shadow cursor _onClick={() => {changeCtrNum(2)}}>
             <Text is_main>#계곡</Text>
           </Button>
-          <Button width="8rem" bg="#78e08f" radius="0.5rem" shadow>
+          <Button width="8rem" bg="#78e08f" radius="0.5rem" shadow cursor _onClick={() => {changeCtrNum(3)}}>
             <Text is_main>#바다</Text>
           </Button>
         </Grid>
@@ -101,9 +110,35 @@ const PostList = (props) => {
         </Grid>
         <hr style={{ color: "gray", size: "0.1rem" }} />
         <Grid is_flex wrap="true" padding="3.6rem">
-          {test_post.map((p, idx) => {
-            return <Post key={p.id} {...p} />;
-          })}
+          {ctrNum === 0
+            ? test_post.map((p, idx) => {
+                return <Post key={p.id} {...p} />;
+              })
+            : ""}
+          {ctrNum === 1
+            ? test_post.map((p, idx) => {
+                if (p.categoryId === 1) {
+                  return <Post key={p.id} {...p} />;
+                }
+                return null;
+              })
+            : ""}
+          {ctrNum === 2
+            ? test_post.map((p, idx) => {
+                if (p.categoryId === 2) {
+                  return <Post key={p.id} {...p} />;
+                }
+                return null;
+              })
+            : ""}
+          {ctrNum === 3
+            ? test_post.map((p, idx) => {
+                if (p.categoryId === 3) {
+                  return <Post key={p.id} {...p} />;
+                }
+                return null;
+              })
+            : ""}
         </Grid>
       </Grid>
     </Grid>
