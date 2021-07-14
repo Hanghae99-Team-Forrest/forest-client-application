@@ -88,6 +88,36 @@
       "image": {},
       "content": "ㅁㄴㅇ",
       "id": 13
+    },
+    {
+      "id": 14
+    },
+    {
+      "title": "제발 들어가주세요",
+      "image": {},
+      "content": "제발이요",
+      "categoryId": 2,
+      "is_open": 1,
+      "score": 5,
+      "id": 15
+    },
+    {
+      "title": "기분나쁨",
+      "image": {},
+      "content": "왜 안됨",
+      "categoryId": 2,
+      "is_open": 0,
+      "score": 1,
+      "id": 16
+    },
+    {
+      "title": "기분 좋음 ",
+      "image": {},
+      "content": "헤헤",
+      "categoryId": 2,
+      "is_open": 1,
+      "score": 3,
+      "id": 17
     }
   ],
   "category": [

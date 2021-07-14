@@ -5,14 +5,15 @@ import MenuItem from "@material-ui/core/MenuItem";
 import { withStyles } from "@material-ui/core/styles";
 import { createTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
-import { purple } from "@material-ui/core/colors";
-import { Text, Grid } from ".";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
+import { Text, Grid } from ".";
+import { actionCreators as imageActions } from "../redux/modules/imageAX";
+import { useDispatch } from "react-redux";
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#ffffff',
+      main: "#ffffff",
     },
     secondary: {
       main: "#44bd32",
@@ -21,6 +22,7 @@ const theme = createTheme({
 });
 
 export default function DropDown(props) {
+  const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -35,11 +37,42 @@ export default function DropDown(props) {
         option.target.innerHTML ||
         option.target.firstChild.data;
       console.log(target);
+
+      if (target === "산") {
+        let ctg = parseInt(1);
+        console.log(ctg);
+        dispatch(imageActions.setCategory(ctg));
+      }
+      if (target === "바 다") {
+        let ctg = parseInt(2);
+        console.log(ctg);
+        dispatch(imageActions.setCategory(ctg));
+      }
+      if (target === "계 곡") {
+        let ctg = parseInt(3);
+        console.log(ctg);
+        dispatch(imageActions.setCategory(ctg));
+      }
+      if (target === "공개") {
+        let is_public = parseInt(1);
+        console.log(is_public);
+        dispatch(imageActions.setPublic(is_public));
+      }
+      if (target === "비공개") {
+        let is_public = parseInt(0);
+        console.log(is_public);
+        dispatch(imageActions.setPublic(is_public));
+      }
+      if (target === "1" || target === "2" || target === "3" || target === "4" || target === "5" ) {
+        let score = parseInt(target);
+        console.log(score);
+        dispatch(imageActions.setScore(score));
+      }
     }
   };
 
   return (
-    <div style={{ margin: "0 1rem"}}>
+    <div style={{ margin: "0 1rem" }}>
       <ThemeProvider theme={theme}>
         <Button
           aria-controls="customized-menu"
@@ -47,7 +80,12 @@ export default function DropDown(props) {
           variant="contained"
           color="secondary"
           onClick={handleClick}
-          style={{width: '13rem', margin: '0 auto', minWidth: '10rem', padding: '1rem'}}
+          style={{
+            width: "13rem",
+            margin: "0 auto",
+            minWidth: "10rem",
+            padding: "1rem",
+          }}
         >
           <Grid is_flex="t">
             <Grid margin="0 1rem 0 0">
@@ -87,7 +125,11 @@ DropDown.defaultProps = {
   options: ["수정", "삭제", "상세보기"],
   icon: {
     _name: "",
-    icon: <ThemeProvider theme={theme}><ArrowDropDownIcon fontSize="large" color='primary'/></ThemeProvider>,
+    icon: (
+      <ThemeProvider theme={theme}>
+        <ArrowDropDownIcon fontSize="large" color="primary" />
+      </ThemeProvider>
+    ),
   },
   post_id: "0",
   size: "",
