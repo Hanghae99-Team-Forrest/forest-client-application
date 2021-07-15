@@ -176,34 +176,52 @@
       "id": 23
     },
     {
-      "title": "이건 산",
-      "multipartFile": {},
-      "content": "이건 리뷰",
-      "categoryId": 1,
-      "userName": "이건닉",
-      "postPassword": "1234",
-      "id": 24
-    },
-    {
-      "title": "이건 26번째 산",
-      "multipartFile": {},
-      "content": "이건 산입니다",
-      "categoryId": 1,
-      "userName": "예뻐요",
-      "postPassword": "1234",
-      "id": 25
-    },
-    {
       "id": 26
     },
     {
-      "title": "이건 산이지롱",
+      "title": "ㅁㄴㅇ",
       "multipartFile": {},
-      "content": "산이야",
-      "categoryId": 1,
-      "userName": "산",
+      "content": "ㅁㄴㅇ",
+      "categoryId": null,
+      "userName": "ㅁㄴㅇ",
       "postPassword": "1234",
-      "id": 27
+      "id": 29
+    },
+    {
+      "title": "1234",
+      "multipartFile": {},
+      "content": "1234",
+      "categoryId": 3,
+      "userName": "123",
+      "postPassword": "1234",
+      "id": 30
+    },
+    {
+      "title": "1111",
+      "multipartFile": {},
+      "content": "1111",
+      "categoryId": 3,
+      "userName": "1111",
+      "postPassword": "1111",
+      "id": 31
+    },
+    {
+      "title": "2222",
+      "multipartFile": "",
+      "content": "2222",
+      "categoryId": 3,
+      "userName": "2222",
+      "postPassword": "2222",
+      "id": 32
+    },
+    {
+      "title": "3333",
+      "multipartFile": "",
+      "content": "3333",
+      "categoryId": 3,
+      "userName": "3333",
+      "postPassword": "3333",
+      "id": 33
     }
   ],
   "category": [

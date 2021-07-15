@@ -42,7 +42,7 @@ const addPostAX = (post) => {
       .post(
         // "http://696d7acce5a2.ngrok.io/api/posts",
         //   .post(
-            "http://localhost:4000/post",
+        "http://localhost:4000/post",
         {
           title: post.title,
           multipartFile: post.image,
@@ -50,7 +50,7 @@ const addPostAX = (post) => {
           categoryId: post.category,
           userName: post.userName,
           postPassword: post.postPassword,
-        },
+        }
         // form
         // { headers: headers }
       )
@@ -106,7 +106,6 @@ const getPostAX = () => {
         console.log(res);
         let post_list = [];
         res.data.forEach((_post) => {
-
           // let post = {
           //   id: _post.postId,
           //   title: _post.title,
@@ -123,7 +122,7 @@ const getPostAX = () => {
             image: _post.image,
             categoryId: _post.categoryId,
             userName: _post.userName,
-            postPassword: _post.postPassword, 
+            postPassword: _post.postPassword,
           };
           post_list.push(post);
         });
@@ -157,7 +156,7 @@ const editPostAX = (post_id = null, post) => {
 
     axios
       .post(
-        "http://localhost:4000/post",
+        "http://localhost:4000/post"
         //   .post(
         //     "http://33ef08a2f4f3.ngrok.io/v1/img-upload",
         // {
@@ -171,7 +170,7 @@ const editPostAX = (post_id = null, post) => {
         //   // is_open: post.public,
         //   // score: post.score,
         // },
-        form
+        // form
 
         // { headers: headers }
       )
@@ -202,7 +201,7 @@ const deleteTestAX = (id) => {
       .then((res) => {
         dispatch(deleteTest(id));
         history.replace("/");
-        window.alert("삭제 완료!")
+        window.alert("삭제 완료!");
       })
       .catch((err) => {
         console.log(err);
@@ -244,6 +243,14 @@ export default handleActions(
         if (idx !== -1) {
           // 배열에서 idx 위치의 요소 1개를 지웁니다.
           draft.t_list.splice(idx, 1);
+          draft.t_list = draft.t_list.reduce((acc, cur) => {
+            if (acc.findIndex((a) => a.id === cur.id) === -1) {
+              return [...acc, cur];
+            } else {
+              acc[acc.findIndex((a) => a.id === cur.id)] = cur;
+              return acc;
+            }
+          }, []);
         }
       }),
   },
