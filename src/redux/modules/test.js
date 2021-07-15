@@ -41,7 +41,7 @@ const addPostAX = (post) => {
     axios
       .post(
         // "http://52.79.137.166/api/posts",
-        "http://d701e9906d5d.ngrok.io/api/posts",
+        "http://acfeed536cf7.ngrok.io/api/posts",
         // {
         //   title: post.title,
         //   multipartFile: post.image,
@@ -98,7 +98,7 @@ const getPostAX = () => {
     };
 
     axios
-      .get("http://d701e9906d5d.ngrok.io/api/posts")
+      .get("http://acfeed536cf7.ngrok.io/api/posts")
       .then((res) => {
         console.log(res);
         let post_list = [];
@@ -147,7 +147,7 @@ const editPostAX = (post_id = null, post) => {
       // form.append("postPassword", post.postPassword);
 
       axios
-        .put(`http://d701e9906d5d.ngrok.io/api/posts/${post_id}`,
+        .put(`http://acfeed536cf7.ngrok.io/api/posts/${post_id}`,
           form,
           // { headers: headers }
         )
@@ -185,7 +185,7 @@ const editPostAX = (post_id = null, post) => {
 
       axios
         .put(
-          `http://d701e9906d5d.ngrok.io/api/posts/${post_id}`,
+          `http://acfeed536cf7.ngrok.io/api/posts/${post_id}`,
           form,
           // { headers: headers }
         )
@@ -214,7 +214,7 @@ const editPostAX = (post_id = null, post) => {
 const deleteTestAX = (id) => {
   return function (dispatch, getState, { history }) {
     axios
-      .delete(`http://d701e9906d5d.ngrok.io/api/posts/${id}`)
+      .delete(`http://acfeed536cf7.ngrok.io/api/posts/${id}`)
       .then((res) => {
         dispatch(deleteTest(id));
         window.alert("삭제 완료!");
