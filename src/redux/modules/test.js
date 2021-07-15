@@ -274,6 +274,14 @@ export default handleActions(
         if (idx !== -1) {
           // 배열에서 idx 위치의 요소 1개를 지웁니다.
           draft.t_list.splice(idx, 1);
+          draft.t_list = draft.t_list.reduce((acc, cur) => {
+            if (acc.findIndex((a) => a.id === cur.id) === -1) {
+              return [...acc, cur];
+            } else {
+              acc[acc.findIndex((a) => a.id === cur.id)] = cur;
+              return acc;
+            }
+          }, []);
         }
       }),
   },
