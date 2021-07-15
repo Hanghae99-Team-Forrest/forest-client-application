@@ -23,33 +23,6 @@ const initialState = {
 
 const addPostAX = (post) => {
   return function (dispatch, getState, { history }) {
-    // const _image = getState().image.preview;
-
-    // const formData = new FormData();
-    // formData.append("image", post.image);
-    // formData.append("title", post.title);
-    // formData.append("content", post.content);
-
-    // helper function: generate a new file from base64 String
-    // const dataURLtoFile = (dataurl, filename) => {
-    //   const arr = dataurl.split(",");
-    //   const mime = arr[0].match(/:(.*?);/)[1];
-    //   const bstr = atob(arr[1]);
-    //   let n = bstr.length;
-    //   const u8arr = new Uint8Array(n);
-    //   while (n) {
-    //     u8arr[n - 1] = bstr.charCodeAt(n - 1);
-    //     n -= 1; // to make eslint happy
-    //   }
-    //   return new File([u8arr], filename, { type: mime });
-    // };
-
-    // const file = dataURLtoFile(_image);
-    // console.log(file);
-
-    // let form = new FormData();
-    // form.append("file", file);
-
     // now upload
     const headers = {
       // "Content-Type": "multipart/form-data",
@@ -62,27 +35,24 @@ const addPostAX = (post) => {
     form.append("title", post.title);
     form.append("content", post.content);
     form.append("categoryId", post.category);
-    form.append("is_open", post.public);
-    form.append("score", post.score);
     form.append("userName", post.userName);
     form.append("postPassword", post.postPassword);
 
     axios
       .post(
         // "http://696d7acce5a2.ngrok.io/api/posts",
-        "http://localhost:4000/post",
+        //   .post(
+            "http://localhost:4000/post",
         {
           title: post.title,
-          image: post.image,
+          multipartFile: post.image,
           content: post.content,
           categoryId: post.category,
-          is_open: post.public,
-          score: post.score,
           userName: post.userName,
           postPassword: post.postPassword,
         },
-        // form,
-        { headers: headers }
+        // form
+        // { headers: headers }
       )
       .then(function (res) {
         console.log(res);
@@ -102,11 +72,11 @@ const addPostAX = (post) => {
           title: res.data.title,
           content: res.data.content,
           id: res.data.id,
+          // image: res.data.imgUrl,
           image: res.data.image,
           categoryId: res.data.categoryId,
-          is_open: res.data.is_open,
-          score: res.data.score,
           userName: res.data.userName,
+          // postPassword: res.data.password,
           postPassword: res.data.postPassword,
         };
         dispatch(addTest(posts));
@@ -136,6 +106,7 @@ const getPostAX = () => {
         console.log(res);
         let post_list = [];
         res.data.forEach((_post) => {
+
           // let post = {
           //   id: _post.postId,
           //   title: _post.title,
@@ -145,16 +116,14 @@ const getPostAX = () => {
           //   userName: _post.userName,
           //   postPassword: _post.password,
           // };
-          const post = {
+          let post = {
             title: _post.title,
             content: _post.content,
             id: _post.id,
             image: _post.image,
             categoryId: _post.categoryId,
-            is_open: _post.is_open,
-            score: _post.score,
             userName: _post.userName,
-            postPassword: _post.postPassword,
+            postPassword: _post.postPassword, 
           };
           post_list.push(post);
         });
@@ -177,19 +146,18 @@ const editPostAX = (post_id = null, post) => {
       "Content-Type": "application/json",
       "Access-Control-Allow-Origin": "*",
     };
-    let form = new FormData();
-    form.append("multipartFile", post.image);
-    form.append("title", post.title);
-    form.append("content", post.content);
-    form.append("categoryId", post.category);
-    form.append("userName", post.userName);
-    form.append("postPassword", post.postPassword);
-    form.append("id", post.id);
-    // form.append("is_open", post.public);
-    // form.append("score", post.score);
+    // let form = new FormData();
+    // form.append("multipartFile", post.image);
+    // form.append("title", post.title);
+    // form.append("content", post.content);
+    // form.append("categoryId", post.category);
+    // form.append("userName", post.userName);
+    // form.append("postPassword", post.postPassword);
+    // form.append("id", post_id);
+
     axios
       .post(
-        "http://696d7acce5a2.ngrok.io/api/posts",
+        "http://localhost:4000/post",
         //   .post(
         //     "http://33ef08a2f4f3.ngrok.io/v1/img-upload",
         // {
@@ -204,19 +172,18 @@ const editPostAX = (post_id = null, post) => {
         //   // score: post.score,
         // },
         form
+
         // { headers: headers }
       )
       .then(function (res) {
         const posts = {
           title: res.data.title,
           content: res.data.content,
-          id: res.data.postId,
+          id: res.data.id,
           image: res.data.imgUrl,
           categoryId: res.data.categoryId,
           userName: res.data.userName,
           postPassword: res.data.password,
-          // is_open: res.data.is_open,
-          // score: res.data.score,
         };
         dispatch(editTest(post_id, posts));
         window.alert("게시글 수정 완료!");
@@ -227,30 +194,6 @@ const editPostAX = (post_id = null, post) => {
       });
   };
 };
-
-// const getOnePostAX = (id) => {
-//   return function (dispatch, getState, { history }) {
-//     const headers = {
-//       "Content-Type": `application/json`,
-//       "Access-Control-Allow-Origin": "*",
-//     };
-//     axios.get("http://localhost:4000/post").then((res) => {
-//       let post_list = [];
-//       let idx = res.data.findIndex((p) => p.id === parseInt(id));
-//       let _post = res.data[idx];
-
-//       let post = {
-//         id: _post.id,
-//         title: _post.title,
-//         image: _post.image,
-//         content: _post.content,
-//         categoryId: _post.categoryId,
-//       };
-//       post_list.push(post);
-//       dispatch(setTest(post_list));
-//     });
-//   };
-// };
 
 const deleteTestAX = (id) => {
   return function (dispatch, getState, { history }) {
@@ -281,11 +224,6 @@ export default handleActions(
             return acc;
           }
         }, []);
-        //   if (action.payload.paging) {
-        //     draft.paging = action.payload.paging;
-        //   }
-
-        //   draft.is_loading = false;
       }),
 
     [ADD_TEST]: (state, action) =>
@@ -320,7 +258,6 @@ const actionCreators = {
   getPostAX,
   editPostAX,
   deleteTestAX,
-  // getOnePostAX,
 };
 
 export { actionCreators };

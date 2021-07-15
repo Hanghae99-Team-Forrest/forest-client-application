@@ -10,8 +10,6 @@ const ReviewContents = (props) => {
   const review_list = useSelector((state) => state.test.t_list);
   const preview = useSelector((state) => state.image.preview);
   const category = useSelector((state) => state.image.category);
-  const is_public = useSelector((sate) => sate.image.public);
-  const score = useSelector((sate) => sate.image.score);
 
   // 수정 판별
   const post_id = props.match.params.id;
@@ -28,8 +26,6 @@ const ReviewContents = (props) => {
     if (is_edit) {
       dispatch(imageActions.setPreview(_post.image));
       dispatch(imageActions.setCategory(_post.categoryId));
-      dispatch(imageActions.setPublic(_post.is_open));
-      dispatch(imageActions.setScore(_post.score));
     } else {
       dispatch(imageActions.setPreview(null));
     }
@@ -89,8 +85,6 @@ const ReviewContents = (props) => {
       content: contents,
       image: image,
       category: category,
-      public: is_public,
-      score: score,
       userName: nick,
       postPassword: post_pw,
     };
@@ -106,12 +100,11 @@ const ReviewContents = (props) => {
       content: contents,
       image: image,
       category: category,
-      public: is_public,
-      score: score,
       userName: nick,
       postPassword: post_pw,
     };
     dispatch(testActions.editPostAX(post_id, post));
+    // console.log(post);
   };
 
   return (
