@@ -109,7 +109,7 @@ const PostList = (props) => {
           </Grid>
         </Grid>
         <hr style={{ color: "gray", size: "0.1rem" }} />
-        <Grid is_flex wrap="true" padding="3.6rem">
+        <Grid flex wrap="true" padding="3.6rem">
           {ctrNum === 0
             ? test_post.map((p, idx) => {
                 return <Post key={p.id} {...p} />;
