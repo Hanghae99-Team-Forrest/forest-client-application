@@ -40,8 +40,7 @@ const addPostAX = (post) => {
 
     axios
       .post(
-        // "http://52.79.137.166/api/posts",
-        "http://acfeed536cf7.ngrok.io/api/posts",
+        "http://52.79.137.166/api/posts",
         // {
         //   title: post.title,
         //   multipartFile: post.image,
@@ -98,7 +97,7 @@ const getPostAX = () => {
     };
 
     axios
-      .get("http://acfeed536cf7.ngrok.io/api/posts")
+      .get("http://52.79.137.166/api/posts")
       .then((res) => {
         console.log(res);
         let post_list = [];
@@ -144,10 +143,10 @@ const editPostAX = (post_id = null, post) => {
       form.append("content", post.content);
       form.append("categoryId", post.category);
       form.append("userName", post.userName);
-      // form.append("postPassword", post.postPassword);
+      form.append("password", post.postPassword);
 
       axios
-        .put(`http://acfeed536cf7.ngrok.io/api/posts/${post_id}`,
+        .put(`http://52.79.137.166/api/posts/${post_id}`,
           form,
           // { headers: headers }
         )
@@ -158,7 +157,7 @@ const editPostAX = (post_id = null, post) => {
             id: res.data.id,
             categoryId: res.data.categoryId,
             userName: res.data.userName,
-            // postPassword: res.data.password,
+            postPassword: res.data.password,
           };
           dispatch(editTest(post_id, posts));
           window.alert("게시글 수정 완료!");
@@ -180,12 +179,12 @@ const editPostAX = (post_id = null, post) => {
       form.append("content", post.content);
       form.append("categoryId", post.category);
       form.append("userName", post.userName);
-      // form.append("postPassword", post.postPassword);
+      form.append("password", post.postPassword);
       // form.append("id", post_id);
 
       axios
         .put(
-          `http://acfeed536cf7.ngrok.io/api/posts/${post_id}`,
+          `http://52.79.137.166/api/posts/${post_id}`,
           form,
           // { headers: headers }
         )
@@ -197,7 +196,7 @@ const editPostAX = (post_id = null, post) => {
             image: res.data.imgUrl,
             categoryId: res.data.categoryId,
             userName: res.data.userName,
-            // postPassword: res.data.password,
+            postPassword: res.data.password,
           };
           dispatch(editTest(post_id, posts));
           window.alert("게시글 수정 완료!");
@@ -214,7 +213,7 @@ const editPostAX = (post_id = null, post) => {
 const deleteTestAX = (id) => {
   return function (dispatch, getState, { history }) {
     axios
-      .delete(`http://acfeed536cf7.ngrok.io/api/posts/${id}`)
+      .delete(`http://52.79.137.166/api/posts/${id}`)
       .then((res) => {
         dispatch(deleteTest(id));
         window.alert("삭제 완료!");
