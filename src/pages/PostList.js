@@ -27,100 +27,106 @@ const PostList = (props) => {
 
   return (
     <Grid>
-      <Grid position="relative">
-        <Image shape="main" src={forest} style={{ position: "absolute" }} />
-        <Grid position="absolute" top="0" left="0" right="0">
-          <Grid minWidth="50rem" maxHeight="16rem" margin="13rem auto">
-            <MainDiv width="100rem" height="20rem" margin="0 auto" ani>
-              Fᴏʀ、Rᴇꜱᴛ
+      <div
+        style={{
+          backgroundImage: `url(${forest})`,
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+        }}
+      >
+        <Grid maxWidth="120rem" margin="0 auto" padding="20rem 0">
+          <MainDiv
+            height="20rem"
+            margin="0 auto"
+            fontSize="6rem"
+            fontWeight="600"
+          >
+            Fᴏʀ、Rᴇꜱᴛ
+          </MainDiv>
+          <Grid post_flex="t" margin="auto">
+            <MainDiv height="10rem" margin="0" fontSize="4rem">
+              Wʜᴇʀᴇᴠᴇʀ ʏᴏᴜ ᴅᴇꜱɪʀᴇ,
             </MainDiv>
-            <MainDiv width="100rem" height="10rem" margin="0 auto" ani2>
-              Wʜᴇʀᴇᴠᴇʀ ʏᴏᴜ ᴅᴇꜱɪʀᴇ, Yᴏᴜ ᴄᴀɴ ɢᴇᴛ ᴛʜᴇʀᴇ.
+            <MainDiv height="10rem" margin="0 0 0 2rem" fontSize="4rem">
+              Yᴏᴜ ᴄᴀɴ ɢᴇᴛ ᴛʜᴇʀᴇ.
             </MainDiv>
           </Grid>
         </Grid>
-      </Grid>
+      </div>
 
-      <Grid padding="0px" maxWidth="100rem" margin="0rem auto 8rem auto">
-        <Text size="2rem" color="#212121" bold>
-          카테고리
-        </Text>
-        <Grid is_flex width="36rem">
-          <Button
-            ctg
-            width="8rem"
-            bg="#78e08f"
-            radius="0.5rem"
-            shadow
-            cursor="t"
-            _onClick={() => {
-              changeCtrNum(0);
-            }}
-          >
-            <Text is_main>#전체</Text>
-          </Button>
-          <Button
-            ctg
-            width="8rem"
-            bg="#78e08f"
-            radius="0.5rem"
-            shadow
-            cursor="t"
-            _onClick={() => {
-              changeCtrNum(1);
-            }}
-          >
-            <Text is_main>#산</Text>
-          </Button>
-          <Button
-            ctg
-            width="8rem"
-            bg="#78e08f"
-            radius="0.5rem"
-            shadow
-            cursor="t"
-            _onClick={() => {
-              changeCtrNum(2);
-            }}
-          >
-            <Text is_main>#바다</Text>
-          </Button>
-          <Button
-            ctg
-            width="8rem"
-            bg="#78e08f"
-            radius="0.5rem"
-            shadow
-            cursor="t"
-            _onClick={() => {
-              changeCtrNum(3);
-            }}
-          >
-            <Text is_main>#계곡</Text>
-          </Button>
+      <Grid padding="0" maxWidth="100rem" margin="0px auto">
+        <Grid padding='0 3rem'>
+          <Text size="2rem" color="#212121" bold="t" width="15rem">
+            카테고리
+          </Text>
         </Grid>
-      </Grid>
-
-      <Grid padding="0px" maxWidth="100rem" margin="0px auto">
         <Grid is_flex maxWidth="100%" margin="0 10rem 0 0">
           <Grid flex maxWidth="30%">
-            <Button bg="white" width="7rem" padding="0">
-              <Text size="2rem" color="#212121" bold>
-                최신순
-              </Text>
-            </Button>
-            <Button bg="white" width="11rem" padding="0 0 0 5rem">
-              <Text size="2rem" color="#212121" bold>
-                인기순
-              </Text>
-            </Button>
+            <Grid is_flex width="36rem" padding='0 0 0 1rem'>
+              <Button
+                ctg
+                width="6.8rem"
+                bg="#78e08f"
+                radius="0.5rem"
+                shadow
+                cursor="t"
+                margin='0 0.4rem'
+                _onClick={() => {
+                  changeCtrNum(0);
+                }}
+              >
+                <Text is_main='t' >#전체</Text>
+              </Button>
+              <Button
+                ctg
+                width="6.8rem"
+                bg="#78e08f"
+                radius="0.5rem"
+                shadow
+                cursor="t"
+                margin='0 0.4rem'
+                _onClick={() => {
+                  changeCtrNum(1);
+                }}
+              >
+                <Text is_main>#산</Text>
+              </Button>
+              <Button
+                ctg
+                width="6.8rem"
+                bg="#78e08f"
+                radius="0.5rem"
+                shadow
+                cursor="t"
+                margin='0 0.4rem'
+                _onClick={() => {
+                  changeCtrNum(2);
+                }}
+              >
+                <Text is_main>#바다</Text>
+              </Button>
+              <Button
+                ctg
+                width="6.8rem"
+                bg="#78e08f"
+                radius="0.5rem"
+                shadow
+                cursor="t"
+                margin='0 0.4rem'
+                _onClick={() => {
+                  changeCtrNum(3);
+                }}
+              >
+                <Text is_main>#계곡</Text>
+              </Button>
+            </Grid>
           </Grid>
 
-          <Grid is_flex maxWidth="13rem" margin="0 4rem 0 0">
+          <Grid is_flex maxWidth="13rem" margin="0 2rem 0 0">
             <Button
               width="3rem"
               height="3rem"
-              margin="0.8rem 0 0 0"
+              margin="2rem 0 0 0"
               padding="0"
               radius="0.8rem"
               color="#57606f"
@@ -147,7 +153,8 @@ const PostList = (props) => {
           </Grid>
         </Grid>
         <hr style={{ color: "gray", size: "0.1rem" }} />
-        <Grid flex wrap="true" padding="3.6rem">
+
+        <Grid card_flex wrap="true" padding="3.6rem">
           {ctrNum === 0
             ? test_post.map((p, idx) => {
                 return <Post key={p.id} {...p} />;
@@ -187,14 +194,16 @@ PostList.defaultProps = {
   margin: false,
   width: "100%",
   height: "100%",
+  fontSize: "4.5rem",
+  fontWeight: "",
   ani: false,
   ani2: false,
 };
 
 const MainDiv = styled.div`
   color: ghostwhite;
-  font-size: 4.5rem;
-  font-weight: 400;
+  ${(props) => (props.fontSize ? `font-size: ${props.fontSize};` : "")}
+  ${(props) => (props.fontWeight ? `font-weight: ${props.fontWeight};` : "")}
   display: flex;
   /* width: 100%; */
   /* height: 100%; */

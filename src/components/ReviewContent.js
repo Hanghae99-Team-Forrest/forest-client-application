@@ -179,7 +179,8 @@ const ReviewContents = (props) => {
             <Input
               value={title}
               _onChange={changeTitle}
-              placeholder="제목을 입력해주세요."
+              placeholder="제목을 입력해주세요. (15글자 제한)"
+              length="15"
             ></Input>
           </Grid>
           <Grid maxWidth="70rem" margin="0 auto">

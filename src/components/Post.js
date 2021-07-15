@@ -9,6 +9,7 @@ import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import { useDispatch, useSelector } from "react-redux";
 import { history } from "../redux/configureStore";
 import { actionCreators as testActions } from "../redux/modules/test";
+import { Hidden } from "@material-ui/core";
 
 const Post = (props) => {
   return (
@@ -18,6 +19,7 @@ const Post = (props) => {
         height="40rem"
         margin="0 2rem 5rem 2rem"
         radius="true"
+        border
         shadow
       >
         <Image
@@ -28,61 +30,24 @@ const Post = (props) => {
             history.push(`/post/${props.id}`);
           }}
         />
-        <Grid is_flex height="5rem" padding="0 0.5rem 0 0.7rem">
+        <Grid is_flex height="4rem" padding="0 0.5rem 0 0.7rem">
           <Text size="2rem" margin="0 0 0 1rem" bold>
             {props.title}
           </Text>
-          {/* <div>
-            {props.is_me && (
-              <Button
-                width="auto"
-                height="3rem"
-                margin="0.4rem"
-                padding="0.4rem"
-                radius="0.5rem"
-                _onClick={() => {
-                  history.push(`/write/${props.id}`);
-                }}
-              >
-                <EditIcon />
-              </Button>
-            )}
-            {props.is_me && (
-              <Button
-                width="auto"
-                height="3rem"
-                margin="0.4rem"
-                padding="0.4rem"
-                radius="0.5rem"
-                _onClick={() => {
-                  history.push(`/post/${props.id}`);
-                }}
-              >
-                <DeleteForeverIcon />
-              </Button>
-            )}
-          </div> */}
         </Grid>
+        <Div>
+          <Grid margin="1rem 1rem 2rem">
+            <Text size="2rem" margin="0 0 0 1rem" bold>
+              {props.content}
+            </Text>
+          </Grid>
+        </Div>
         <Grid flex width="auto" height="5rem" margin="0 0 0 1rem">
-          <Image shape="circle" src="https://image.flaticon.com/icons/png/512/1177/1177568.png" />
+          <Image
+            shape="circle"
+            src="https://image.flaticon.com/icons/png/512/1177/1177568.png"
+          />
           <Text bold>{props.userName}</Text>
-        </Grid>
-        <Grid flex padding="1rem 1.6rem 0 1.6rem" width="auto" height="5rem">
-          <Heart icon_url={heart_gray} />
-          <Text
-            margin="0px"
-            bold
-            width="5rem"
-            height="4rem"
-            padding="0.5rem 0 0 1rem"
-          >
-            {props.like_cnt}
-          </Text>
-        </Grid>
-        <Grid padding="1rem 1.6rem 0 1.6rem" height="auto">
-          <Text margin="0 0 0 0.5rem" bold>
-            댓글 {props.comment_cnt}개
-          </Text>
         </Grid>
       </Grid>
     </React.Fragment>
@@ -111,4 +76,14 @@ const Heart = styled.div`
   background-size: cover;
   cursor: pointer;
 `;
+
+const Div = styled.div`
+  height: 10rem;
+  padding: 0 1rem 0 0;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
 export default Post;

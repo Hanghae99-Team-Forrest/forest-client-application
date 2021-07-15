@@ -12,6 +12,7 @@ const Input = (props) => {
     value,
     is_submit,
     onSubmit,
+    length,
   } = props;
 
   if (multiLine) {
@@ -43,7 +44,7 @@ const Input = (props) => {
             }}
           />
         ) : (
-          <ElInput type={type} placeholder={placeholder} onChange={_onChange} value={value}/>
+          <ElInput type={type} placeholder={placeholder} onChange={_onChange} value={value} maxLength={length}/>
         )}
       </Grid>
     </React.Fragment>
@@ -55,6 +56,7 @@ Input.defaultProps = {
   placeholder: "텍스트를 입력해주세요.",
   type: "text",
   value: "",
+  length: 50,
   is_submit: false,
   onSubmit: () => {},
   _onChange: () => {},

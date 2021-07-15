@@ -27,12 +27,15 @@ const Grid = (props) => {
     maxHeight,
     wrap,
     review_flex,
+    post_flex,
+    card_flex,
   } = props;
 
   const styles = {
     is_flex: is_flex,
     flex: flex,
     review_flex: review_flex,
+    post_flex: post_flex,
     position: position,
     padding: padding,
     margin: margin,
@@ -52,6 +55,7 @@ const Grid = (props) => {
     maxHeight: maxHeight,
     wrap: wrap,
     border: border,
+    card_flex: card_flex,
   };
 
   return (
@@ -68,6 +72,8 @@ Grid.defaultProps = {
   children: null,
   is_flex: false,
   review_flex: false,
+  post_flex: false,
+  card_flex: false,
   flex: false,
   position: false,
   width: "100%",
@@ -117,15 +123,24 @@ const GridBox = styled.div`
   ${(props) => (props.left ? `left: ${props.left};` : "")}
   ${(props) => (props.right ? `right: ${props.right};` : "")}
   ${(props) => (props.maxHeight ? `max-height: ${props.maxHeight};` : "")}
-  ${(props) => (props.flex ? `display: flex;` : "")}
+  ${(props) => (props.flex ? `display: flex; ` : "")}
+  ${(props) => (props.card_flex ? `display: flex; justify-content: center;` : "")}
   ${(props) => (props.wrap ? `flex-wrap: wrap;` : "")}
   ${(props) =>
     props.border ? `border-radius: 0.4rem; border: 1px solid #718093;` : ""}
+
 
 @media (min-width: 501px) {
     ${(props) =>
       props.review_flex
         ? `display: flex; align-items: center; justify-content: space-between;`
+        : ""}
+  }
+
+  @media (min-width: 510px) {
+    ${(props) =>
+      props.post_flex
+        ? `display: flex; align-items: center; justify-content: center;`
         : ""}
   }
 `;
