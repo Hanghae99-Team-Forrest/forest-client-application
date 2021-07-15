@@ -73,7 +73,12 @@ const DetailContent = (props) => {
               radius="0.05rem"
               border="0.05rem solid white"
               _onClick={() => {
-                history.push(`/review/${props.id}`);
+                const pw_check = prompt("게시글 작성 시 입력한 비밀번호를 입력하세요.");
+                if (pw_check === props.postPassword) {
+                  history.push(`/review/${props.id}`);
+                } else {
+                  alert("비밀번호를 확인해주세요.");
+                }
               }}
             >
               <Text is_main>수정하기</Text>

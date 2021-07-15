@@ -53,21 +53,6 @@ export default function DropDown(props) {
         console.log(ctg);
         dispatch(imageActions.setCategory(ctg));
       }
-      if (target === "공개") {
-        let is_public = parseInt(1);
-        console.log(is_public);
-        dispatch(imageActions.setPublic(is_public));
-      }
-      if (target === "비공개") {
-        let is_public = parseInt(0);
-        console.log(is_public);
-        dispatch(imageActions.setPublic(is_public));
-      }
-      if (target === "1" || target === "2" || target === "3" || target === "4" || target === "5" ) {
-        let score = parseInt(target);
-        console.log(score);
-        dispatch(imageActions.setScore(score));
-      }
     }
   };
 

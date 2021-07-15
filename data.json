@@ -174,6 +174,36 @@
       "userName": "frankie",
       "postPassword": "1234",
       "id": 23
+    },
+    {
+      "title": "이건 산",
+      "multipartFile": {},
+      "content": "이건 리뷰",
+      "categoryId": 1,
+      "userName": "이건닉",
+      "postPassword": "1234",
+      "id": 24
+    },
+    {
+      "title": "이건 26번째 산",
+      "multipartFile": {},
+      "content": "이건 산입니다",
+      "categoryId": 1,
+      "userName": "예뻐요",
+      "postPassword": "1234",
+      "id": 25
+    },
+    {
+      "id": 26
+    },
+    {
+      "title": "이건 산이지롱",
+      "multipartFile": {},
+      "content": "산이야",
+      "categoryId": 1,
+      "userName": "산",
+      "postPassword": "1234",
+      "id": 27
     }
   ],
   "category": [
