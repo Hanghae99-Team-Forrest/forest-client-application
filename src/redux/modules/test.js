@@ -42,7 +42,7 @@ const addPostAX = (post) => {
       .post(
         // "http://696d7acce5a2.ngrok.io/api/posts",
         //   .post(
-            "http://localhost:4000/post",
+        "http://localhost:4000/post",
         {
           title: post.title,
           multipartFile: post.image,
@@ -50,7 +50,7 @@ const addPostAX = (post) => {
           categoryId: post.category,
           userName: post.userName,
           postPassword: post.postPassword,
-        },
+        }
         // form
         // { headers: headers }
       )
@@ -106,7 +106,7 @@ const getPostAX = () => {
         console.log(res);
         let post_list = [];
         res.data.forEach((_post) => {
-
+          // 실제 서버 연결 했을 때,
           // let post = {
           //   id: _post.postId,
           //   title: _post.title,
@@ -120,10 +120,10 @@ const getPostAX = () => {
             title: _post.title,
             content: _post.content,
             id: _post.id,
-            image: _post.image,
+            image: _post.multipartFile,
             categoryId: _post.categoryId,
             userName: _post.userName,
-            postPassword: _post.postPassword, 
+            postPassword: _post.postPassword,
           };
           post_list.push(post);
         });
@@ -141,57 +141,87 @@ const editPostAX = (post_id = null, post) => {
       console.log("게시물 정보가 없습니다.");
       return;
     }
-    const headers = {
-      // "Content-Type": "multipart/form-data",
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-    };
-    // let form = new FormData();
-    // form.append("multipartFile", post.image);
-    // form.append("title", post.title);
-    // form.append("content", post.content);
-    // form.append("categoryId", post.category);
-    // form.append("userName", post.userName);
-    // form.append("postPassword", post.postPassword);
-    // form.append("id", post_id);
 
-    axios
-      .post(
-        "http://localhost:4000/post",
-        //   .post(
-        //     "http://33ef08a2f4f3.ngrok.io/v1/img-upload",
-        // {
-        //   title: post.title,
-        //   image: post.image,
-        //   content: post.content,
-        //   categoryId: post.category,
-        //   userName: post.userName,
-        //   postPassword: post.postPassword,
-        //   id: post.id,
-        //   // is_open: post.public,
-        //   // score: post.score,
-        // },
-        form
+    const edit_image = post.image;
+    const old_review_idx = getState().test.t_list.findIndex(
+      (p) => p.id === parseInt(post_id)
+    );
+    const old_review = getState().test.t_list[old_review_idx];
+    console.log(old_review);
+    console.log(post);
 
-        // { headers: headers }
-      )
-      .then(function (res) {
-        const posts = {
-          title: res.data.title,
-          content: res.data.content,
-          id: res.data.id,
-          image: res.data.imgUrl,
-          categoryId: res.data.categoryId,
-          userName: res.data.userName,
-          postPassword: res.data.password,
-        };
-        dispatch(editTest(post_id, posts));
-        window.alert("게시글 수정 완료!");
-        history.replace(`/post/${post_id}`);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    if (edit_image === old_review.image) {
+      let form = new FormData();
+      form.append("multipartFile", null);
+      form.append("title", post.title);
+      form.append("content", post.content);
+      form.append("categoryId", post.category);
+      form.append("userName", post.userName);
+      form.append("postPassword", post.postPassword);
+      form.append("id", post_id);
+
+      axios
+        .post("http://33ef08a2f4f3.ngrok.io/v1/img-upload",
+          form,
+          // { headers: headers }
+        )
+        .then(function (res) {
+          const posts = {
+            title: res.data.title,
+            content: res.data.content,
+            id: res.data.id,
+            categoryId: res.data.categoryId,
+            userName: res.data.userName,
+            postPassword: res.data.password,
+          };
+          dispatch(editTest(post_id, posts));
+          window.alert("게시글 수정 완료!");
+          history.replace(`/post/${post_id}`);
+        })
+        .catch(function (error) {
+          window.alert("이미지 수정에 에러가 났어요");
+          console.log(error);
+        });
+    } else {
+      // const headers = {
+      //   // "Content-Type": "multipart/form-data",
+      //   "Content-Type": "application/json",
+      //   "Access-Control-Allow-Origin": "*",
+      // };
+      let form = new FormData();
+      form.append("multipartFile", post.image);
+      form.append("title", post.title);
+      form.append("content", post.content);
+      form.append("categoryId", post.category);
+      form.append("userName", post.userName);
+      form.append("postPassword", post.postPassword);
+      form.append("id", post_id);
+
+      axios
+        .post(
+          "http://33ef08a2f4f3.ngrok.io/v1/img-upload",
+          form,
+          // { headers: headers }
+        )
+        .then(function (res) {
+          const posts = {
+            title: res.data.title,
+            content: res.data.content,
+            id: res.data.id,
+            image: res.data.imgUrl,
+            categoryId: res.data.categoryId,
+            userName: res.data.userName,
+            postPassword: res.data.password,
+          };
+          dispatch(editTest(post_id, posts));
+          window.alert("게시글 수정 완료!");
+          history.replace(`/post/${post_id}`);
+        })
+        .catch(function (error) {
+          window.alert("이미지 수정에 에러가 났어요");
+          console.log(error);
+        });
+    }
   };
 };
 
@@ -202,7 +232,7 @@ const deleteTestAX = (id) => {
       .then((res) => {
         dispatch(deleteTest(id));
         history.replace("/");
-        window.alert("삭제 완료!")
+        window.alert("삭제 완료!");
       })
       .catch((err) => {
         console.log(err);
