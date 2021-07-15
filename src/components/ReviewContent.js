@@ -14,12 +14,15 @@ const ReviewContents = (props) => {
   // 수정 판별
   const post_id = props.match.params.id;
   const is_edit = post_id ? true : false;
-  let _post = is_edit ? review_list.find((l) => l.id === parseInt(post_id)) : null;
-
+  let _post = is_edit
+  ? review_list.find((l) => l.id === parseInt(post_id))
+  : null;
+  
   React.useEffect(() => {
     console.log(_post);
     if (is_edit && !_post) {
       console.log("포스트 정보 없음");
+      window.alert("포스트 정보가 없습니다.");
       history.goBack();
       return;
     }
@@ -88,9 +91,24 @@ const ReviewContents = (props) => {
       userName: nick,
       postPassword: post_pw,
     };
-    dispatch(testActions.addPostAX(post));
     console.log(typeof image);
     console.log(post);
+    if (!image) {
+      window.alert("이미지를 입력해주세요");
+      return;
+    }
+
+    if (!category) {
+      window.alert("카테고리를 선택해주세요");
+      return;
+    }
+
+    if (title === "" || contents === "" || nick === "" || post_pw === "") {
+      window.alert("빈칸을 입력해주세요");
+      return;
+    }
+
+    dispatch(testActions.addPostAX(post));
   };
 
   // 리뷰 저장
@@ -103,6 +121,15 @@ const ReviewContents = (props) => {
       userName: nick,
       postPassword: post_pw,
     };
+    if (!category) {
+      window.alert("카테고리를 선택해주세요");
+      return;
+    }
+
+    if (title === "" || contents === "" || nick === "" || post_pw === "") {
+      window.alert("빈칸을 입력해주세요");
+      return;
+    }
     dispatch(testActions.editPostAX(post_id, post));
     // console.log(post);
   };
@@ -188,7 +215,7 @@ const ReviewContents = (props) => {
               ></Input>
             </Grid>
           </Grid>
-          
+
           <Grid maxWidth="70rem" margin="0 auto 2rem">
             {is_edit ? (
               <Button
