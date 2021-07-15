@@ -7,9 +7,6 @@ import ReviewContents from "../components/ReviewContent";
 import { history } from "../redux/configureStore";
 
 const ReviewWrite = (props) => {
-  React.useEffect(() => {
-    console.log(window.innerWidth);
-  }, []);
 
   return (
     <React.Fragment>

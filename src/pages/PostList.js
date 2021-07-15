@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import forest from "../shared/img/forest2.jpeg";
 import Post from "../components/Post";
-import { Grid, Image, Text, Input, Button } from "../elements";
+import { Grid, Text, Button } from "../elements";
 import BorderColorIcon from "@material-ui/icons/BorderColor";
 
 import { useDispatch, useSelector } from "react-redux";

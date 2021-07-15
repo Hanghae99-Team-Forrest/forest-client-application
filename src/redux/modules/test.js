@@ -1,7 +1,6 @@
 import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
 import axios from "axios";
-import { history } from "../configureStore";
 
 const SET_TEST = "SET_TEST";
 const ADD_TEST = "ADD_TEST";
@@ -24,11 +23,11 @@ const initialState = {
 const addPostAX = (post) => {
   return function (dispatch, getState, { history }) {
     // now upload
-    const headers = {
-      // "Content-Type": "multipart/form-data",
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-    };
+    // const headers = {
+    //   // "Content-Type": "multipart/form-data",
+    //   "Content-Type": "application/json",
+    //   "Access-Control-Allow-Origin": "*",
+    // };
 
     let form = new FormData();
     form.append("multipartFile", post.image);
@@ -53,8 +52,6 @@ const addPostAX = (post) => {
         // { headers: headers }
       )
       .then(function (res) {
-        console.log(res);
-        console.log(res.data);
         // const posts = {
         //   title: res.data.title,
         //   content: res.data.content,
@@ -88,18 +85,16 @@ const addPostAX = (post) => {
 
 const getPostAX = () => {
   return function (dispatch, getState, { history }) {
-    const _post = getState().test.t_list;
 
-    const headers = {
-      // "Content-Type": `application/json`,
-      "Content-Type": "multipart/form-data",
-      "Access-Control-Allow-Origin": "*",
-    };
+    // const headers = {
+    //   // "Content-Type": `application/json`,
+    //   "Content-Type": "multipart/form-data",
+    //   "Access-Control-Allow-Origin": "*",
+    // };
 
     axios
       .get("http://52.79.137.166/api/posts")
       .then((res) => {
-        console.log(res);
         let post_list = [];
         res.data.forEach((_post) => {
           // 실제 서버 연결 했을 때,
@@ -125,7 +120,7 @@ const getPostAX = () => {
 const editPostAX = (post_id = null, post) => {
   return function (dispatch, getState, { history }) {
     if (!post_id) {
-      console.log("게시물 정보가 없습니다.");
+      window.alert("게시물 정보가 없습니다.");
       return;
     }
 
@@ -134,8 +129,6 @@ const editPostAX = (post_id = null, post) => {
       (p) => p.id === parseInt(post_id)
     );
     const old_review = getState().test.t_list[old_review_idx];
-    console.log(old_review);
-    console.log(post);
 
     if (edit_image === old_review.image) {
       let form = new FormData();

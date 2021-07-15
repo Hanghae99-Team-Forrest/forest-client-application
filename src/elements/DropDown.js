@@ -36,21 +36,17 @@ export default function DropDown(props) {
         option.target.firstChild.innerHTML ||
         option.target.innerHTML ||
         option.target.firstChild.data;
-      console.log(target);
 
       if (target === "산") {
         let ctg = parseInt(1);
-        console.log(ctg);
         dispatch(imageActions.setCategory(ctg));
       }
       if (target === "바 다") {
         let ctg = parseInt(2);
-        console.log(ctg);
         dispatch(imageActions.setCategory(ctg));
       }
       if (target === "계 곡") {
         let ctg = parseInt(3);
-        console.log(ctg);
         dispatch(imageActions.setCategory(ctg));
       }
     }

@@ -3,14 +3,8 @@ import React from "react";
 import { Grid, Text } from "../elements";
 import DetailContent from "./DetailContent";
 
-import { useDispatch } from "react-redux";
-import { actionCreators as testAction } from "../redux/modules/test";
-import { history } from "../redux/configureStore";
-
 const Detail = (props) => {
-  // const dispatch = useDispatch();
   React.useEffect(() => {
-    // dispatch(testAction.getPostAX());
   }, []);
 
   return (

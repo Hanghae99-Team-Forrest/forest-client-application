@@ -1,9 +1,8 @@
 import React from "react";
-import { actionCreators as imageActions } from "../redux/modules/imageAX";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { actionCreators as testActions } from "../redux/modules/test";
-import { Grid, Text, Image, Input, Button } from "../elements";
+import { Grid, Text, Image, Button } from "../elements";
 import { history } from "../redux/configureStore";
 
 const DetailContent = (props) => {
@@ -13,8 +12,6 @@ const DetailContent = (props) => {
 
   const deletePost = () => {
     const deletemsg = prompt("게시글 작성 시 입력한 비밀번호를 입력하세요")
-    console.log(typeof deletemsg);
-    console.log(typeof props.postPassword);
     if(deletemsg === props.postPassword){
       dispatch(testActions.deleteTestAX(id));
     }else{

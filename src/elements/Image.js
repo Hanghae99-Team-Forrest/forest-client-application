@@ -77,11 +77,6 @@ const ImageCircle = styled.div`
   margin: 0.4rem;
 `;
 
-const MainBackground = styled.div`
-  width: 100%;
-  min-width: 25rem;
-`;
-
 const MainInner = styled.div`
   width: 100%;
   min-width: 25rem;

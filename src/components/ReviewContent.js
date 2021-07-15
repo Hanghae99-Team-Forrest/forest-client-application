@@ -19,9 +19,7 @@ const ReviewContents = (props) => {
   : null;
   
   React.useEffect(() => {
-    console.log(_post);
     if (is_edit && !_post) {
-      console.log("포스트 정보 없음");
       window.alert("포스트 정보가 없습니다.");
       history.goBack();
       return;
@@ -44,25 +42,21 @@ const ReviewContents = (props) => {
   // 리뷰 제목
   const changeTitle = (e) => {
     setTitle(e.target.value);
-    //   console.log(title);
   };
 
   // 리뷰 내용
   const changeContents = (e) => {
     setContents(e.target.value);
-    // console.log(contents);
   };
 
   // 닉네임
   const changeNick = (e) => {
     setNick(e.target.value);
-    //   console.log(nick);
   };
 
   // 게시글 비번
   const changePostPw = (e) => {
     setPostPw(e.target.value);
-    //   console.log(nick);
   };
 
   // 선택한 파일 정보
@@ -70,12 +64,11 @@ const ReviewContents = (props) => {
     const reader = new FileReader();
     const file = fileInput.current.files[0];
     setImage(file);
-    console.log(file);
+
     if (file) {
-      console.log(e);
+
       reader.readAsDataURL(file);
       reader.onloadend = () => {
-        console.log(reader.result);
         dispatch(imageActions.setPreview(reader.result));
       };
     }
@@ -91,8 +84,7 @@ const ReviewContents = (props) => {
       userName: nick,
       postPassword: post_pw,
     };
-    console.log(typeof image);
-    console.log(post);
+
     if (!image) {
       window.alert("이미지를 입력해주세요");
       return;
@@ -131,7 +123,6 @@ const ReviewContents = (props) => {
       return;
     }
     dispatch(testActions.editPostAX(post_id, post));
-    // console.log(post);
   };
 
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import Post from "../components/Post";
+
 import Detail from "../components/Detail";
 
 import { Grid } from "../elements";

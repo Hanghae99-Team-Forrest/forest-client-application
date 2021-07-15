@@ -1,15 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-import { Grid, Image, Text, Button } from "../elements";
-import heart_gray from "../shared/img/heart_gray.png";
-import EditIcon from "@material-ui/icons/Edit";
-import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
-
-import { useDispatch, useSelector } from "react-redux";
+import { Grid, Image, Text } from "../elements";
 import { history } from "../redux/configureStore";
-import { actionCreators as testActions } from "../redux/modules/test";
-import { Hidden } from "@material-ui/core";
 
 const Post = (props) => {
   return (
@@ -67,15 +60,6 @@ Post.defaultProps = {
   insert_dt: "2021-02-27 10:00:00",
   is_me: true,
 };
-
-const Heart = styled.div`
-  width: 30px;
-  height: 30px;
-  display: flex;
-  background: url(${(props) => props.icon_url});
-  background-size: cover;
-  cursor: pointer;
-`;
 
 const Div = styled.div`
   height: 10rem;
