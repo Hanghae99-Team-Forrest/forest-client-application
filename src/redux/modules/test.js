@@ -40,18 +40,17 @@ const addPostAX = (post) => {
 
     axios
       .post(
-        // "http://696d7acce5a2.ngrok.io/api/posts",
-        //   .post(
-        "http://localhost:4000/post",
-        {
-          title: post.title,
-          multipartFile: post.image,
-          content: post.content,
-          categoryId: post.category,
-          userName: post.userName,
-          postPassword: post.postPassword,
-        }
-        // form
+        // "http://52.79.137.166/api/posts",
+        "http://d701e9906d5d.ngrok.io/api/posts",
+        // {
+        //   title: post.title,
+        //   multipartFile: post.image,
+        //   content: post.content,
+        //   categoryId: post.category,
+        //   userName: post.userName,
+        //   postPassword: post.postPassword,
+        // }
+        form
         // { headers: headers }
       )
       .then(function (res) {
@@ -72,17 +71,15 @@ const addPostAX = (post) => {
           title: res.data.title,
           content: res.data.content,
           id: res.data.id,
-          // image: res.data.imgUrl,
-          image: res.data.image,
+          image: res.data.imgUrl,
           categoryId: res.data.categoryId,
           userName: res.data.userName,
-          // postPassword: res.data.password,
-          postPassword: res.data.postPassword,
+          postPassword: res.data.password,
         };
         dispatch(addTest(posts));
         window.alert("게시글 작성 완료!");
-        history.replace("/");
-        // window.location.replace('/');
+        // history.replace("/");
+        window.location.replace('/');
       })
       .catch(function (error) {
         console.log(error);
@@ -95,35 +92,26 @@ const getPostAX = () => {
     const _post = getState().test.t_list;
 
     const headers = {
-      "Content-Type": `application/json`,
-      // "Content-Type": "multipart/form-data",
+      // "Content-Type": `application/json`,
+      "Content-Type": "multipart/form-data",
       "Access-Control-Allow-Origin": "*",
     };
 
     axios
-      .get("http://localhost:4000/post")
+      .get("http://d701e9906d5d.ngrok.io/api/posts")
       .then((res) => {
         console.log(res);
         let post_list = [];
         res.data.forEach((_post) => {
           // 실제 서버 연결 했을 때,
-          // let post = {
-          //   id: _post.postId,
-          //   title: _post.title,
-          //   image: _post.imgUrl,
-          //   content: _post.content,
-          //   categoryId: _post.categoryId,
-          //   userName: _post.userName,
-          //   postPassword: _post.password,
-          // };
           let post = {
+            id: _post.postId,
             title: _post.title,
+            image: _post.imgUrl,
             content: _post.content,
-            id: _post.id,
-            image: _post.multipartFile,
             categoryId: _post.categoryId,
             userName: _post.userName,
-            postPassword: _post.postPassword,
+            postPassword: _post.password,
           };
           post_list.push(post);
         });
@@ -152,16 +140,14 @@ const editPostAX = (post_id = null, post) => {
 
     if (edit_image === old_review.image) {
       let form = new FormData();
-      form.append("multipartFile", null);
       form.append("title", post.title);
       form.append("content", post.content);
       form.append("categoryId", post.category);
       form.append("userName", post.userName);
-      form.append("postPassword", post.postPassword);
-      form.append("id", post_id);
+      // form.append("postPassword", post.postPassword);
 
       axios
-        .post("http://33ef08a2f4f3.ngrok.io/v1/img-upload",
+        .put(`http://d701e9906d5d.ngrok.io/api/posts/${post_id}`,
           form,
           // { headers: headers }
         )
@@ -172,7 +158,7 @@ const editPostAX = (post_id = null, post) => {
             id: res.data.id,
             categoryId: res.data.categoryId,
             userName: res.data.userName,
-            postPassword: res.data.password,
+            // postPassword: res.data.password,
           };
           dispatch(editTest(post_id, posts));
           window.alert("게시글 수정 완료!");
@@ -194,12 +180,12 @@ const editPostAX = (post_id = null, post) => {
       form.append("content", post.content);
       form.append("categoryId", post.category);
       form.append("userName", post.userName);
-      form.append("postPassword", post.postPassword);
-      form.append("id", post_id);
+      // form.append("postPassword", post.postPassword);
+      // form.append("id", post_id);
 
       axios
-        .post(
-          "http://33ef08a2f4f3.ngrok.io/v1/img-upload",
+        .put(
+          `http://d701e9906d5d.ngrok.io/api/posts/${post_id}`,
           form,
           // { headers: headers }
         )
@@ -211,7 +197,7 @@ const editPostAX = (post_id = null, post) => {
             image: res.data.imgUrl,
             categoryId: res.data.categoryId,
             userName: res.data.userName,
-            postPassword: res.data.password,
+            // postPassword: res.data.password,
           };
           dispatch(editTest(post_id, posts));
           window.alert("게시글 수정 완료!");
@@ -228,11 +214,11 @@ const editPostAX = (post_id = null, post) => {
 const deleteTestAX = (id) => {
   return function (dispatch, getState, { history }) {
     axios
-      .delete(`http://localhost:4000/post/${id}`)
+      .delete(`http://d701e9906d5d.ngrok.io/api/posts/${id}`)
       .then((res) => {
         dispatch(deleteTest(id));
-        history.replace("/");
         window.alert("삭제 완료!");
+        history.replace("/");
       })
       .catch((err) => {
         console.log(err);
