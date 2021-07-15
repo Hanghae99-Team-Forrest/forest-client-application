@@ -5,7 +5,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as testActions } from "../redux/modules/test";
 import { Grid, Text, Image, Input, Button } from "../elements";
 import { history } from "../redux/configureStore";
+
 const DetailContent = (props) => {
+  const dispatch = useDispatch();
+
+  const id = props.id;
+
+  const deletePost = () => {
+    const deletemsg = prompt("게시글 작성 시 입력한 비밀번호를 입력하세요");
+    if(deletemsg === props.postPassword){
+      dispatch(testActions.deleteTestAX(id));
+    }else{
+      window.alert("비밀번호가 일치하지 않습니다.");
+    }
+  }
+
   return (
     <React.Fragment>
       <Grid margin="0 auto" maxWidth="180rem">
@@ -90,6 +104,7 @@ const DetailContent = (props) => {
               cursor="t"
               radius="0.05rem "
               border="0.05rem solid white"
+              _onClick={deletePost}
             >
               <Text is_main>삭제하기</Text>
             </Button>
