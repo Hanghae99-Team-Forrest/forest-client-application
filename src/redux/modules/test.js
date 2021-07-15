@@ -100,7 +100,7 @@ const addPostAX = (post) => {
         dispatch(addTest(posts));
         window.alert("게시글 작성 완료!");
         history.replace("/");
-        // window.location.reload('/');
+        // window.location.replace('/');
       })
       .catch(function (error) {
         console.log(error);

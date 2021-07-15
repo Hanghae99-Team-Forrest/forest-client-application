@@ -23,7 +23,7 @@ const Post = (props) => {
         <Image
           shape="rectangle"
           src={props.image}
-          cursor
+          cursor="t"
           _onClick={() => {
             history.push(`/post/${props.id}`);
           }}
@@ -64,8 +64,8 @@ const Post = (props) => {
           </div> */}
         </Grid>
         <Grid flex width="auto" height="5rem" margin="0 0 0 1rem">
-          <Image shape="circle" src={props.src} />
-          <Text bold>{props.user_info.user_name}</Text>
+          <Image shape="circle" src="https://image.flaticon.com/icons/png/512/1177/1177568.png" />
+          <Text bold>{props.userName}</Text>
         </Grid>
         <Grid flex padding="1rem 1.6rem 0 1.6rem" width="auto" height="5rem">
           <Heart icon_url={heart_gray} />

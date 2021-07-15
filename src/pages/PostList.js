@@ -48,16 +48,16 @@ const PostList = (props) => {
           카테고리
         </Text>
         <Grid is_flex width="36rem">
-          <Button width="8rem" bg="#78e08f" radius="0.5rem" shadow cursor _onClick={() => {changeCtrNum(0)}} >
+          <Button width="8rem" bg="#78e08f" radius="0.5rem" shadow cursor="t" _onClick={() => {changeCtrNum(0)}} >
             <Text is_main>#전체</Text>
           </Button>
-          <Button width="8rem" bg="#78e08f" radius="0.5rem" shadow cursor _onClick={() => {changeCtrNum(1)}}>
+          <Button width="8rem" bg="#78e08f" radius="0.5rem" shadow cursor="t" _onClick={() => {changeCtrNum(1)}}>
             <Text is_main>#산</Text>
           </Button>
-          <Button width="8rem" bg="#78e08f" radius="0.5rem" shadow cursor _onClick={() => {changeCtrNum(2)}}>
+          <Button width="8rem" bg="#78e08f" radius="0.5rem" shadow cursor="t" _onClick={() => {changeCtrNum(2)}}>
             <Text is_main>#바다</Text>
           </Button>
-          <Button width="8rem" bg="#78e08f" radius="0.5rem" shadow cursor _onClick={() => {changeCtrNum(3)}}>
+          <Button width="8rem" bg="#78e08f" radius="0.5rem" shadow cursor="t" _onClick={() => {changeCtrNum(3)}}>
             <Text is_main>#계곡</Text>
           </Button>
         </Grid>
