@@ -16,7 +16,7 @@ const Post = (props) => {
       <Grid
         width="26rem"
         height="40rem"
-        margin="0 0 5rem 0"
+        margin="0 2rem 5rem 2rem"
         radius="true"
         shadow
       >

@@ -12,7 +12,9 @@ const DetailContent = (props) => {
   const id = props.id;
 
   const deletePost = () => {
-    const deletemsg = prompt("게시글 작성 시 입력한 비밀번호를 입력하세요");
+    const deletemsg = prompt("게시글 작성 시 입력한 비밀번호를 입력하세요")
+    console.log(typeof deletemsg);
+    console.log(typeof props.postPassword);
     if(deletemsg === props.postPassword){
       dispatch(testActions.deleteTestAX(id));
     }else{
